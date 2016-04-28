@@ -11,7 +11,6 @@ namespace Assets.Scripts.Player
         
         public Vector3 Movement;
 
-
         void Update()
         {
             ApplyFriction();
