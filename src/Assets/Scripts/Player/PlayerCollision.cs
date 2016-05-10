@@ -6,9 +6,11 @@ namespace Assets.Scripts.Player
     {
         void OnCollisionEnter(Collision collider)
         {
-            var rigidBody = GetComponent<Rigidbody>();
-            rigidBody.AddForce(collider.relativeVelocity * 100);
-            Debug.Log("shit");
+//            var rigidBody = GetComponent<Rigidbody>();
+//            foreach (var contactPoint in collider.contacts)
+//            {
+//                rigidBody.AddForce(contactPoint.normal * 10 * collider.impulse.magnitude);
+//            }
         }
     }
 }

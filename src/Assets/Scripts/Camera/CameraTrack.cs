@@ -6,6 +6,9 @@ namespace Assets.Scripts.Camera
     {
         public GameObject GameObject;
         public Vector3 Offset;
+        public float SmoothTime = 0.3f;
+
+        private Vector3 _velocity = Vector3.zero;
 
         void Start()
         {
@@ -14,7 +17,9 @@ namespace Assets.Scripts.Camera
 
         void Update()
         {
-            transform.position = GameObject.transform.position + Offset;
+            var goalPos = GameObject.transform.position;
+            goalPos.y = transform.position.y;
+            transform.position = Vector3.SmoothDamp(transform.position, goalPos, ref _velocity, SmoothTime);
         }
     }
 }

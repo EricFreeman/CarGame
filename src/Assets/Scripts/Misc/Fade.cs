@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Environment
+namespace Assets.Scripts.Misc
 {
-    public class Dust : MonoBehaviour
+    public class Fade : MonoBehaviour
     {
         public float TimeRemaining = .1f;
-        public float ScaleModifier = 1.05f;
 
         private float _currentTimeRemaining;
         private SpriteRenderer _spriteRenderer;
@@ -13,7 +12,7 @@ namespace Assets.Scripts.Environment
         void Start()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            _currentTimeRemaining = TimeRemaining/3;
+            _currentTimeRemaining = TimeRemaining;
         }
 
         void Update()
@@ -24,7 +23,7 @@ namespace Assets.Scripts.Environment
             {
                 Destroy(gameObject);
             }
-            transform.localScale *= ScaleModifier;
+
             _spriteRenderer.color = new Color(1f, 1f, 1f, _currentTimeRemaining / TimeRemaining);
         }
     }

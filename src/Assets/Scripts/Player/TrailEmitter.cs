@@ -1,11 +1,10 @@
-﻿using Assets.Scripts.Environment;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    public class DustEmitter : MonoBehaviour
+    public class TrailEmitter: MonoBehaviour
     {
-        public Dust DustGameObject;
+        public GameObject DustGameObject;
         public float SpawnDistance = .2f;
 
         private Vector3 _lastPosition;
