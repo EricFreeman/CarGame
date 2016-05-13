@@ -10,7 +10,7 @@ namespace Assets.Scripts.Player
         {
             var rigidBody = GetComponent<Rigidbody>();
             var averagePosition = collider.contacts.Select(x => x.normal).Average();
-            rigidBody.AddForce(averagePosition * 250 * collider.impulse.magnitude);
+//            rigidBody.AddForce(averagePosition * 250 * collider.impulse.magnitude);
         }
     }
 }
