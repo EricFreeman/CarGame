@@ -33,8 +33,6 @@ namespace Assets.Scripts.Enemies
             Destroy(GetComponent<PlayerFollow>());
             GetComponentInChildren<SpriteRenderer>().sprite = Destroyed;
 
-            Debug.Log(context.Direction);
-
             var rigidBody = GetComponent<Rigidbody>();
             rigidBody.isKinematic = false;
 //            rigidBody.AddForce(context.Direction * context.Force * 300);
