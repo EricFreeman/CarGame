@@ -12,6 +12,8 @@ namespace Assets.Scripts.Enemies
         [HideInInspector]
         public int CurrentHealth;
 
+        private bool _isDead;
+
         void Start()
         {
             CurrentHealth = MaxHealth;
@@ -29,13 +31,22 @@ namespace Assets.Scripts.Enemies
 
         public void Die(DamageContext context)
         {
-            Destroy(GetComponent<NavMeshAgent>());
-            Destroy(GetComponent<PlayerFollow>());
-            GetComponentInChildren<SpriteRenderer>().sprite = Destroyed;
+            if (!_isDead)
+            {
+                _isDead = true;
 
-            var rigidBody = GetComponent<Rigidbody>();
-            rigidBody.isKinematic = false;
+                var navMesh = GetComponent<NavMeshAgent>();
+                var currentVelocity = navMesh.velocity;
+
+                Destroy(navMesh);
+                Destroy(GetComponent<PlayerFollow>());
+                GetComponentInChildren<SpriteRenderer>().sprite = Destroyed;
+
+                var rigidBody = GetComponent<Rigidbody>();
+                rigidBody.isKinematic = false;
+                rigidBody.velocity = currentVelocity;
 //            rigidBody.AddForce(context.Direction * context.Force * 300);
+            }
         }
     }
 }
