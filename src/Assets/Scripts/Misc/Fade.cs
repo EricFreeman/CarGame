@@ -5,6 +5,7 @@ namespace Assets.Scripts.Misc
     public class Fade : MonoBehaviour
     {
         public float TimeRemaining = .1f;
+        public float CurrentTimeOverride = -1;
 
         private float _currentTimeRemaining;
         private SpriteRenderer _spriteRenderer;
@@ -12,7 +13,7 @@ namespace Assets.Scripts.Misc
         void Start()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            _currentTimeRemaining = TimeRemaining;
+            _currentTimeRemaining = CurrentTimeOverride >= 0 ? CurrentTimeOverride : TimeRemaining;
         }
 
         void Update()
