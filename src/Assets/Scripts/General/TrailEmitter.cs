@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Player
+namespace Assets.Scripts.General
 {
     public class TrailEmitter: MonoBehaviour
     {
@@ -19,17 +19,16 @@ namespace Assets.Scripts.Player
             var delta = transform.position - _lastPosition;
             var particlesToSpawn = (int)(delta.magnitude/SpawnDistance);
 
-            Vector3 spawnPosition = _lastPosition;
+            var spawnPosition = _lastPosition;
             for (var i = 0; i < particlesToSpawn; i++)
             {
                 spawnPosition = Vector3.MoveTowards(spawnPosition, transform.position, SpawnDistance);
-                SpawnDust(spawnPosition);
+                SpawnTrail(spawnPosition);
                 _lastPosition = transform.position;
             }
-
         }
 
-        private void SpawnDust(Vector3 position)
+        private void SpawnTrail(Vector3 position)
         {
             var dust = Instantiate(DustGameObject);
             dust.transform.position = position;

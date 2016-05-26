@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Misc
+namespace Assets.Scripts.General
 {
     public class Fade : MonoBehaviour
     {

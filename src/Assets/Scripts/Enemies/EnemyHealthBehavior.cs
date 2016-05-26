@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.General;
-using System;
 using UnityEngine;
+using ParticleEmitter = Assets.Scripts.General.ParticleEmitter;
 
 namespace Assets.Scripts.Enemies
 {
@@ -45,7 +45,8 @@ namespace Assets.Scripts.Enemies
                 var rigidBody = GetComponent<Rigidbody>();
                 rigidBody.isKinematic = false;
                 rigidBody.velocity = currentVelocity;
-//            rigidBody.AddForce(context.Direction * context.Force * 300);
+
+                GetComponent<ParticleEmitter>().Fire(currentVelocity, 20, 5);
             }
         }
     }

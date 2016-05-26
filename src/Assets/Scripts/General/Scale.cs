@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Environment
+namespace Assets.Scripts.General
 {
     public class Scale : MonoBehaviour
     {
