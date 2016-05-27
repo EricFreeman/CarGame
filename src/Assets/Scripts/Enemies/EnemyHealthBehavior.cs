@@ -8,6 +8,8 @@ namespace Assets.Scripts.Enemies
     {
         public int MaxHealth;
         public Sprite Destroyed;
+        public ParticleEmitter PartsEmitter;
+        public ParticleEmitter SmokeEmitter;
 
         [HideInInspector]
         public int CurrentHealth;
@@ -17,6 +19,14 @@ namespace Assets.Scripts.Enemies
         void Start()
         {
             CurrentHealth = MaxHealth;
+        }
+
+        void Update()
+        {
+            if (CurrentHealth < MaxHealth)
+            {
+                SmokeEmitter.Fire();
+            }
         }
 
         public void TakeDamage(DamageContext context)
@@ -46,7 +56,7 @@ namespace Assets.Scripts.Enemies
                 rigidBody.isKinematic = false;
                 rigidBody.velocity = currentVelocity;
 
-                GetComponent<ParticleEmitter>().Fire(currentVelocity, 20, 5);
+                PartsEmitter.Fire(currentVelocity, 20, 5);
             }
         }
     }
