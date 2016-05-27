@@ -1,5 +1,7 @@
 ﻿using Assets.Scripts.General;
+using Assets.Scripts.Messages;
 using UnityEngine;
+using UnityEventAggregator;
 using ParticleEmitter = Assets.Scripts.General.ParticleEmitter;
 
 namespace Assets.Scripts.Enemies
@@ -44,6 +46,7 @@ namespace Assets.Scripts.Enemies
         {
             if (!_isDead)
             {
+                EventAggregator.SendMessage(new ShakeCamera());
                 _isDead = true;
 
                 var navMesh = GetComponent<NavMeshAgent>();
