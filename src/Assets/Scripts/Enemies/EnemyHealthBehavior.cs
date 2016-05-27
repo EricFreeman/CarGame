@@ -25,13 +25,14 @@ namespace Assets.Scripts.Enemies
         {
             if (CurrentHealth < MaxHealth)
             {
-                SmokeEmitter.Fire();
+                SmokeEmitter.Fire((float)CurrentHealth < 0 ? 0 : CurrentHealth / (float)MaxHealth);
             }
         }
 
         public void TakeDamage(DamageContext context)
         {
             CurrentHealth -= context.Damage;
+            PartsEmitter.Fire(Vector3.zero, 20, Random.Range(1, 3));
 
             if (CurrentHealth <= 0)
             {
@@ -56,7 +57,7 @@ namespace Assets.Scripts.Enemies
                 rigidBody.isKinematic = false;
                 rigidBody.velocity = currentVelocity;
 
-                PartsEmitter.Fire(currentVelocity, 20, 5);
+                PartsEmitter.Fire(currentVelocity, 20, Random.Range(5, 10));
             }
         }
     }

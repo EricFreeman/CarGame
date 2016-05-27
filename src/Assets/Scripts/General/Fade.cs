@@ -25,7 +25,8 @@ namespace Assets.Scripts.General
                 Destroy(gameObject);
             }
 
-            _spriteRenderer.color = new Color(1f, 1f, 1f, _currentTimeRemaining / TimeRemaining);
+            var color = _spriteRenderer.color;
+            _spriteRenderer.color = new Color(color.r, color.g, color.b, _currentTimeRemaining / TimeRemaining);
         }
     }
 }

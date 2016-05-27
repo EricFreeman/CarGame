@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripts.Extensions;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.General
 {
@@ -43,6 +44,21 @@ namespace Assets.Scripts.General
                         ForceMode.Impulse);
                 }
             }
+        }
+
+        public void Fire(float colorMultiplier)
+        {
+            var obj = Instantiate(ParticleGameObject);
+            var spriteRenderer = obj.GetComponentInChildren<SpriteRenderer>();
+            spriteRenderer.sprite = SpriteList.Random();
+
+            var color = spriteRenderer.color;
+            spriteRenderer.color = new Color(color.r * colorMultiplier, color.g * colorMultiplier, color.b * colorMultiplier, 1);
+
+            obj.transform.position = transform.position + new Vector3(0, .1f, 0);
+            obj.GetComponent<Rigidbody>().AddForce(
+                new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * ParticleForce,
+                ForceMode.Impulse);
         }
 
         public void Fire()
