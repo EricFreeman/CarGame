@@ -16,18 +16,27 @@ namespace Assets.Scripts.Enemies
         [HideInInspector]
         public int CurrentHealth;
 
+        public float SmokeDelay = .01f;
+        private float _currentSmokeDelay;
+
         private bool _isDead;
 
         void Start()
         {
             CurrentHealth = MaxHealth;
+            _currentSmokeDelay = SmokeDelay;
         }
 
         void Update()
         {
             if (CurrentHealth < MaxHealth)
             {
-                SmokeEmitter.Fire((float)CurrentHealth < 0 ? 0 : CurrentHealth / (float)MaxHealth);
+                _currentSmokeDelay -= Time.deltaTime;
+                if (_currentSmokeDelay <= 0)
+                {
+                    _currentSmokeDelay = SmokeDelay;
+                    SmokeEmitter.Fire((float) CurrentHealth < 0 ? 0 : CurrentHealth/(float) MaxHealth);
+                }
             }
         }
 

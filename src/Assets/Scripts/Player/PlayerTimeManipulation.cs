@@ -6,7 +6,7 @@ namespace Assets.Scripts.Player
     {
         void Update()
         {
-            Time.timeScale = Mathf.Lerp(Time.timeScale, Input.GetKey(KeyCode.LeftShift) ? .1f : 1f, .1f);
+            Time.timeScale = Mathf.Lerp(Time.timeScale, Input.GetKey(KeyCode.LeftShift) ? .25f : 1f, .1f);
         }
     }
 }
