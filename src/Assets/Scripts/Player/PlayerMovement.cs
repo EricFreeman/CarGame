@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using Assets.Scripts.Extensions;
+using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
@@ -11,6 +13,11 @@ namespace Assets.Scripts.Player
         
         public Vector3 Movement;
 
+        void Start()
+        {
+//            Time.timeScale = .25f;
+        }
+
         void Update()
         {
             ApplyFriction();
@@ -22,11 +29,36 @@ namespace Assets.Scripts.Player
             var horizontal = Input.GetAxisRaw("Horizontal") * Movement.magnitude * TurnSpeed;
             var veritcal = Input.GetAxisRaw("Vertical");
 
-            transform.Rotate(new Vector3(0, horizontal, 0));
+            transform.Rotate(new Vector3(0, horizontal * Time.timeScale, 0));
             var newMovement = transform.forward*Acceleration*veritcal;
+
+            RaycastHit hit;
+            var rayTest = Movement + newMovement;
+            var ray = new Ray(transform.position, rayTest.normalized * 2);
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.distance <= rayTest.magnitude + 2)
+                {
+                    Bounce(hit.normal);
+                }
+            }
             Movement += newMovement;
 
-            transform.position += Movement;
+            transform.position += Movement * Time.timeScale;
+        }
+
+        void OnCollisionEnter(Collision collision)
+        {
+            if (collision.transform.tag == "Wall")
+            {
+                Bounce(collision.contacts.Select(x => x.normal).Average());
+            }
+        }
+
+        private void Bounce(Vector3 normal)
+        {
+            Movement = -(2f * Vector3.Scale(Vector3.Scale(normal, Movement), normal) - Movement) * .2f;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(Movement), .1f);
         }
 
         private void ApplyFriction()
