@@ -13,11 +13,6 @@ namespace Assets.Scripts.Player
         
         public Vector3 Movement;
 
-        void Start()
-        {
-//            Time.timeScale = .25f;
-        }
-
         void Update()
         {
             ApplyFriction();
@@ -37,7 +32,7 @@ namespace Assets.Scripts.Player
             var ray = new Ray(transform.position, rayTest.normalized * 2);
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.distance <= rayTest.magnitude + 2)
+                if (hit.distance <= rayTest.magnitude + 1.5f)
                 {
                     Bounce(hit.normal);
                 }
