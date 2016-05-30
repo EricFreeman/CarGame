@@ -8,15 +8,13 @@ namespace Assets.Scripts.UI
         public Transform Target;
         public bool ShouldReturn;
 
-        private bool _isMouseDown = false;
+        private bool _isMouseDown;
         private Vector3 _startMousePosition;
         private Vector3 _startPosition;
 
         public void OnPointerDown(PointerEventData dt)
         {
             _isMouseDown = true;
-
-            Debug.Log("Draggable Mouse Down");
 
             _startPosition = Target.position;
             _startMousePosition = Input.mousePosition;
