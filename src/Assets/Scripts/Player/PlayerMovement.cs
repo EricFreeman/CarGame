@@ -21,10 +21,10 @@ namespace Assets.Scripts.Player
 
         private void ApplyMovement()
         {
-            var horizontal = Input.GetAxisRaw("Horizontal") * Movement.magnitude * TurnSpeed;
+            var horizontal = Input.GetAxisRaw("Horizontal") * Movement.magnitude * TurnSpeed * Time.timeScale;
             var veritcal = Input.GetAxisRaw("Vertical");
 
-            transform.Rotate(new Vector3(0, horizontal * Time.timeScale, 0));
+            transform.Rotate(new Vector3(0, horizontal, 0));
             var newMovement = transform.forward*Acceleration*veritcal;
 
             RaycastHit hit;
