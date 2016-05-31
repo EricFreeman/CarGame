@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.UI
 {
@@ -41,6 +42,8 @@ namespace Assets.Scripts.UI
                 {
                     Target.sizeDelta = new Vector2(Target.sizeDelta.x, MinSize.y);
                 }
+
+                Canvas.ForceUpdateCanvases();
             }
         }
     }
