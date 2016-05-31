@@ -41,7 +41,6 @@ namespace Assets.Scripts.UI
                 {
                     Target.sizeDelta = new Vector2(Target.sizeDelta.x, MinSize.y);
                 }
-
             }
         }
     }
