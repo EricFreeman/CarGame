@@ -11,19 +11,18 @@ namespace Assets.Scripts.Player
         void Update()
         {
             var turnAmount = Input.GetAxisRaw("Horizontal");
+            var desiredAngle = 0f;
 
             if (turnAmount < 0)
             {
-                transform.localRotation = Quaternion.Euler(0, Mathf.MoveTowardsAngle(transform.localEulerAngles.y, -MaxRotation, TurnSpeed * Time.deltaTime), 0);
+                desiredAngle = -MaxRotation;
             }
             else if (turnAmount > 0)
             {
-                transform.localRotation = Quaternion.Euler(0, Mathf.MoveTowardsAngle(transform.localEulerAngles.y, MaxRotation, TurnSpeed * Time.deltaTime), 0);
+                desiredAngle = MaxRotation;
             }
-            else
-            {
-                transform.localRotation = Quaternion.Euler(0, Mathf.MoveTowardsAngle(transform.localEulerAngles.y, 0, TurnSpeed * Time.deltaTime), 0);
-            }
+
+            transform.localRotation = Quaternion.Euler(0, Mathf.MoveTowardsAngle(transform.localEulerAngles.y, desiredAngle, TurnSpeed * Time.deltaTime), 0);
         }
     }
 }
