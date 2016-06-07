@@ -6,7 +6,7 @@ namespace Assets.Scripts.General
     {
         void Update()
         {
-            if (Vector3.Distance(UnityEngine.Camera.main.transform.position, transform.position) > 100)
+            if (Vector3.Distance(UnityEngine.Camera.main.transform.position, transform.position) > 70)
             {
                 Destroy(gameObject);
             }

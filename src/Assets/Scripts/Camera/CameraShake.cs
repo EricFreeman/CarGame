@@ -25,7 +25,7 @@ namespace Assets.Scripts.Camera
 
         void Update()
         {
-            if (ShakeIntensity > 0)
+            if (ShakeIntensity >= 0)
             {
                 transform.position = OriginalPos + Random.insideUnitSphere * ShakeIntensity;
                 transform.rotation = new Quaternion(OriginalRot.x + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
@@ -43,8 +43,11 @@ namespace Assets.Scripts.Camera
 
         public void Handle(ShakeCamera message)
         {
-            OriginalPos = transform.position;
-            OriginalRot = transform.rotation;
+            if (!Shaking)
+            {
+                OriginalPos = transform.position;
+                OriginalRot = transform.rotation;
+            }
 
             ShakeIntensity = 0.3f;
             ShakeDecay = 0.02f;

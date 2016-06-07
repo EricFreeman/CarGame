@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21252848}
   - 114: {fileID: 11433094}
   - 114: {fileID: 11413518}
+  - 114: {fileID: 11444688}
   m_Layer: 0
   m_Name: Dust
   m_TagString: Untagged
@@ -27,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalEulerAnglesHint: {x: 89.980194, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -56,6 +58,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeRemaining: 2
   EndScale: 4
+--- !u!114 &11444688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48f3d928de68957469f3aa5cb068e075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21252848
 SpriteRenderer:
   m_ObjectHideFlags: 1
