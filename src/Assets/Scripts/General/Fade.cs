@@ -6,6 +6,7 @@ namespace Assets.Scripts.General
     {
         public float TimeRemaining = .1f;
         public float CurrentTimeOverride = -1;
+        public float FadeSpeed = 1f;
 
         private float _currentTimeRemaining;
         private SpriteRenderer _spriteRenderer;
@@ -14,11 +15,14 @@ namespace Assets.Scripts.General
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _currentTimeRemaining = CurrentTimeOverride >= 0 ? CurrentTimeOverride : TimeRemaining;
+
+            var color = _spriteRenderer.color;
+            _spriteRenderer.color = new Color(color.r, color.g, color.b, _currentTimeRemaining / TimeRemaining);
         }
 
         void Update()
         {
-            _currentTimeRemaining -= Time.deltaTime;
+            _currentTimeRemaining -= (Time.deltaTime * FadeSpeed);
 
             if (_currentTimeRemaining <= 0)
             {
