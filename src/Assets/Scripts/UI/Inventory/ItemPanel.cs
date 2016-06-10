@@ -18,7 +18,6 @@ public class ItemPanel : MonoBehaviour
 
     public void OnSelect()
     {
-        Select();
         _inventoryManager.SelectItem(Item.Id);
     }
 
