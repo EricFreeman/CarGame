@@ -7,6 +7,16 @@ namespace Assets.Scripts.Inventory
     {
         public string Name;
         public string Description;
+        public ItemType Type;
         public Guid Id;
+    }
+
+    public enum ItemType
+    {
+        Weapon,
+        Armor,
+        Engine,
+        Wheels,
+        Junk
     }
 }

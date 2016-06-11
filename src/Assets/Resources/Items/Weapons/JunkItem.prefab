@@ -42,6 +42,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Junk Item
   Description: This is just junk.
+  Type: 4
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
