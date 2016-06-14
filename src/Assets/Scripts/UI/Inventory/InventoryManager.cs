@@ -20,25 +20,23 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         // TODO: serialize/deserialize player inventory later
+        CreateItem("GenericWeapon");
+        CreateItem("JunkItem");
+        CreateItem("MetalArmor");
+        CreateItem("OffRoadWheels");
+        CreateItem("RacingWheels");
+        CreateItem("ScrapArmor");
+        CreateItem("SuperMachineGun");
+        CreateItem("V8Engine");
+    }
 
-        for (var i = 0; i < 15; i++)
-        {
-            var temp = TempDeleteMeLaterSeriouslyFuck.Copy();
-            var temp2 = TempDeleteMeLaterSeriouslyFuck2.Copy();
-
-            temp.Id = Guid.NewGuid();
-            temp2.Id = Guid.NewGuid();
-
-            var panel = Instantiate(ItemPanel);
-            panel.GetComponent<ItemPanel>().Item = temp;
-            panel.transform.SetParent(ItemScroller, false);
-            Items.Add(panel.GetComponent<ItemPanel>());
-
-            var panel2 = Instantiate(ItemPanel);
-            panel2.GetComponent<ItemPanel>().Item = temp2;
-            panel2.transform.SetParent(ItemScroller, false);
-            Items.Add(panel2.GetComponent<ItemPanel>());
-        }
+    private void CreateItem(string name)
+    {
+        var item = Instantiate(Resources.Load<Item>("Items/Weapons/" + name));
+        var panel = Instantiate(ItemPanel);
+        panel.GetComponent<ItemPanel>().Item = item;
+        panel.transform.SetParent(ItemScroller, false);
+        Items.Add(panel.GetComponent<ItemPanel>());
     }
 
     public void SelectItem(Guid id)

@@ -8,7 +8,7 @@ namespace Assets.Scripts.Inventory
         public string Name;
         public string Description;
         public ItemType Type;
-        public Guid Id;
+        public Guid Id = Guid.NewGuid();
     }
 
     public enum ItemType
