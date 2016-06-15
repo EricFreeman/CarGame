@@ -12,9 +12,6 @@ public class InventoryManager : MonoBehaviour
 
     public ItemDescriptionManager ItemDescriptionManager;
 
-    public Item TempDeleteMeLaterSeriouslyFuck;
-    public Item TempDeleteMeLaterSeriouslyFuck2;
-
     private ItemPanel _selectedItem;
 
     void Start()
