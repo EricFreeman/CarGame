@@ -51,8 +51,8 @@ public class InventoryManager : MonoBehaviour
             item.Select();
             ItemDescriptionManager.SelectItem(item.Item);
             UpdateEquippableSlots(item.Item.Type);
-            
-            if(_selectedItem != null)
+
+            if (_selectedItem != null)
             {
                 var oldItem = Items.FirstOrDefault(x => x.GetComponent<ItemPanel>().Item.Id == _selectedItem.Item.Id);
                 oldItem.GetComponent<ItemPanel>().Deselect();
@@ -74,7 +74,7 @@ public class InventoryManager : MonoBehaviour
 
         foreach (var item in resettable)
         {
-            if (true) // not equipped
+            if (item.EquippedItem == null)
             {
                 item.SelectionImage.sprite = EquippableSlotEmpty;
             }
