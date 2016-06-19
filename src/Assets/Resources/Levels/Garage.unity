@@ -233,6 +233,7 @@ MonoBehaviour:
     type: 3}
   EquippableSlotEquipped: {fileID: 21300004, guid: 9785565cf4e236346a161a8d5cac9472,
     type: 3}
+  SelectedItem: {fileID: 0}
 --- !u!1 &211886952
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,10 +390,6 @@ Prefab:
     - target: {fileID: 165316, guid: 2f14b72716358f142b8ee1959748c718, type: 2}
       propertyPath: m_Name
       value: EquippedPanel (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 11471138, guid: 2f14b72716358f142b8ee1959748c718, type: 2}
-      propertyPath: ItemType
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f14b72716358f142b8ee1959748c718, type: 2}
@@ -1207,6 +1204,10 @@ Prefab:
     - target: {fileID: 22428190, guid: 2f14b72716358f142b8ee1959748c718, type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471138, guid: 2f14b72716358f142b8ee1959748c718, type: 2}
+      propertyPath: ItemType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11417328, guid: 2f14b72716358f142b8ee1959748c718, type: 2}
       propertyPath: m_Text

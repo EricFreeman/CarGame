@@ -10,9 +10,18 @@ public class EquippedPanel : MonoBehaviour
 
     public Sprite SelectedSprite;
 
-    public void EquipItem(Item item)
+    private InventoryManager _inventoryManager;
+
+    void Start()
     {
-        if (item.Type == ItemType)
+        _inventoryManager = FindObjectOfType<InventoryManager>();
+    }
+
+    public void EquipItem()
+    {
+        var item = _inventoryManager.SelectedItem.Item;
+
+        if (item != null && item.Type == ItemType)
         {
             EquippedItem = item;
             SelectionImage.sprite = SelectedSprite;

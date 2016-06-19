@@ -16,7 +16,8 @@ public class InventoryManager : MonoBehaviour
     public Sprite EquippableSlotCanEquip;
     public Sprite EquippableSlotEquipped;
 
-    private ItemPanel _selectedItem;
+    [HideInInspector]
+    public ItemPanel SelectedItem;
     private List<EquippedPanel> _equippedPanel;
 
     void Start()
@@ -52,13 +53,13 @@ public class InventoryManager : MonoBehaviour
             ItemDescriptionManager.SelectItem(item.Item);
             UpdateEquippableSlots(item.Item.Type);
 
-            if (_selectedItem != null)
+            if (SelectedItem != null)
             {
-                var oldItem = Items.FirstOrDefault(x => x.GetComponent<ItemPanel>().Item.Id == _selectedItem.Item.Id);
+                var oldItem = Items.FirstOrDefault(x => x.GetComponent<ItemPanel>().Item.Id == SelectedItem.Item.Id);
                 oldItem.GetComponent<ItemPanel>().Deselect();
             }
 
-            _selectedItem = item;
+            SelectedItem = item;
         }
     }
 

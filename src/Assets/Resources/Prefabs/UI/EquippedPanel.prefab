@@ -140,7 +140,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11479802}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11471138}
+        m_MethodName: EquipItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11471138
@@ -155,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquippedItem: {fileID: 0}
-  ItemType: 3
+  ItemType: 1
   SelectionImage: {fileID: 11479802}
   SelectedSprite: {fileID: 21300004, guid: 9785565cf4e236346a161a8d5cac9472, type: 3}
 --- !u!114 &11477116
