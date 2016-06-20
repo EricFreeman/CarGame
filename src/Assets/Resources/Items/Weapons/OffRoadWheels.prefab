@@ -43,6 +43,7 @@ MonoBehaviour:
   Name: Off-Road Wheels
   Description: Better grip on the sand.
   Type: 3
+  Image: {fileID: 21300000, guid: e91c4eb1f38208b4991afe8525634832, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

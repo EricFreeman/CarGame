@@ -391,6 +391,14 @@ Prefab:
       propertyPath: m_Name
       value: EquippedPanel (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 11471138, guid: 2f14b72716358f142b8ee1959748c718, type: 2}
+      propertyPath: ItemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417328, guid: 2f14b72716358f142b8ee1959748c718, type: 2}
+      propertyPath: m_Text
+      value: Armor
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f14b72716358f142b8ee1959748c718, type: 2}
   m_IsPrefabParent: 0
@@ -1205,14 +1213,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 11471138, guid: 2f14b72716358f142b8ee1959748c718, type: 2}
-      propertyPath: ItemType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11417328, guid: 2f14b72716358f142b8ee1959748c718, type: 2}
-      propertyPath: m_Text
-      value: Wheel
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f14b72716358f142b8ee1959748c718, type: 2}
   m_IsPrefabParent: 0
@@ -1395,6 +1395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: {fileID: 211886954}
   Description: {fileID: 1729908603}
+  Image: {fileID: 1811826753}
 --- !u!1 &1680286031
 GameObject:
   m_ObjectHideFlags: 0

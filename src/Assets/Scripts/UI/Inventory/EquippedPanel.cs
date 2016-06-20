@@ -7,6 +7,7 @@ public class EquippedPanel : MonoBehaviour
     public Item EquippedItem;
     public ItemType ItemType;
     public Image SelectionImage;
+    public Image EquippedItemImage;
 
     public Sprite SelectedSprite;
 
@@ -25,6 +26,7 @@ public class EquippedPanel : MonoBehaviour
         {
             EquippedItem = item;
             SelectionImage.sprite = SelectedSprite;
+            EquippedItemImage.sprite = item.Image;
         }
     }
 }
