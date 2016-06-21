@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -214,6 +214,7 @@ MonoBehaviour:
   SelectionImage: {fileID: 11479802}
   EquippedItemImage: {fileID: 11408060}
   SelectedSprite: {fileID: 21300004, guid: 9785565cf4e236346a161a8d5cac9472, type: 3}
+  EmptySprite: {fileID: 21300000, guid: 9785565cf4e236346a161a8d5cac9472, type: 3}
 --- !u!114 &11477116
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,6 +10,7 @@ public class EquippedPanel : MonoBehaviour
     public Image EquippedItemImage;
 
     public Sprite SelectedSprite;
+    public Sprite EmptySprite;
 
     private InventoryManager _inventoryManager;
 
@@ -20,13 +21,35 @@ public class EquippedPanel : MonoBehaviour
 
     public void EquipItem()
     {
-        var item = _inventoryManager.SelectedItem.Item;
-
-        if (item != null && item.Type == ItemType)
+        if (Input.GetKey(KeyCode.LeftControl))
         {
-            EquippedItem = item;
-            SelectionImage.sprite = SelectedSprite;
-            EquippedItemImage.sprite = item.Image;
+            DeSelectItem();
+            return;
         }
+        else
+        {
+            if(_inventoryManager.SelectedItem == null || _inventoryManager.SelectedItem.Item == null)
+            {
+                return;
+            }
+
+            var item = _inventoryManager.SelectedItem.Item;
+
+            if (item != null && item.Type == ItemType)
+            {
+                EquippedItem = item;
+                SelectionImage.sprite = SelectedSprite;
+                EquippedItemImage.sprite = item.Image;
+                EquippedItemImage.color = new Color(1, 1, 1, 1);
+            }
+        }
+    }
+
+    public void DeSelectItem()
+    {
+        EquippedItem = null;
+        SelectionImage.sprite = EmptySprite;
+        EquippedItemImage.sprite = null;
+        EquippedItemImage.color = new Color(1, 1, 1, 0);
     }
 }
