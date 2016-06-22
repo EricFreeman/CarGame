@@ -46,12 +46,14 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        CreateItem(item.Name);
+        CreateItem(item.name.Replace("(Clone)", ""));
     }
 
     public void RemoveItem(Item item)
     {
-        Destroy(Items.FirstOrDefault(x => x.Item.Id == item.Id).gameObject);
+        var itemPanel = Items.FirstOrDefault(x => x.Item.Id == item.Id);
+        Items.Remove(itemPanel);
+        Destroy(itemPanel.gameObject);
     }
 
     public void SelectItem(Guid id)

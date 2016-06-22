@@ -39,6 +39,11 @@ public class EquippedPanel : MonoBehaviour
 
             if (item != null && item.Type == ItemType)
             {
+                if (EquippedItem != null)
+                {
+                    _inventoryManager.AddItem(EquippedItem);
+                }
+
                 EquippedItem = item;
                 SelectionImage.sprite = SelectedSprite;
                 EquippedItemImage.sprite = item.Image;
