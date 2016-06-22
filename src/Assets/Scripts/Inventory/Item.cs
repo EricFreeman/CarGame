@@ -14,6 +14,7 @@ namespace Assets.Scripts.Inventory
 
     public enum ItemType
     {
+        None,
         Weapon,
         Armor,
         Engine,

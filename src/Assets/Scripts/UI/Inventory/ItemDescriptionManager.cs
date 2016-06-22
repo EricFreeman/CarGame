@@ -10,8 +10,17 @@ public class ItemDescriptionManager : MonoBehaviour
 
     public void SelectItem(Item item)
     {
-        Name.text = item.Name;
-        Description.text = item.Description;
-        Image.sprite = item.Image;
+        if (item == null)
+        {
+            Name.text = "";
+            Description.text = "";
+            Image.sprite = null;
+        }
+        else
+        {
+            Name.text = item.Name;
+            Description.text = item.Description;
+            Image.sprite = item.Image;
+        }
     }
 }

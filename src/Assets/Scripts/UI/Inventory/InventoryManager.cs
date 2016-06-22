@@ -47,19 +47,30 @@ public class InventoryManager : MonoBehaviour
     public void SelectItem(Guid id)
     {
         var item = Items.FirstOrDefault(x => x.GetComponent<ItemPanel>().Item.Id == id);
-        if (item != null)
+        if(SelectedItem != null && SelectedItem.Item.Id == id)
+        {
+            item.Deselect();
+            ItemDescriptionManager.SelectItem(null);
+            UpdateEquippableSlots(ItemType.None);
+            DeselectSelectedItem();
+            SelectedItem = null;
+        }
+        else if (item != null)
         {
             item.Select();
             ItemDescriptionManager.SelectItem(item.Item);
             UpdateEquippableSlots(item.Item.Type);
-
-            if (SelectedItem != null)
-            {
-                var oldItem = Items.FirstOrDefault(x => x.GetComponent<ItemPanel>().Item.Id == SelectedItem.Item.Id);
-                oldItem.GetComponent<ItemPanel>().Deselect();
-            }
-
+            DeselectSelectedItem();
             SelectedItem = item;
+        }
+    }
+
+    private void DeselectSelectedItem()
+    {
+        if (SelectedItem != null)
+        {
+            var oldItem = Items.FirstOrDefault(x => x.GetComponent<ItemPanel>().Item.Id == SelectedItem.Item.Id);
+            oldItem.GetComponent<ItemPanel>().Deselect();
         }
     }
 
