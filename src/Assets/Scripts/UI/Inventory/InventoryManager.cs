@@ -44,6 +44,16 @@ public class InventoryManager : MonoBehaviour
         Items.Add(panel.GetComponent<ItemPanel>());
     }
 
+    public void AddItem(Item item)
+    {
+        CreateItem(item.Name);
+    }
+
+    public void RemoveItem(Item item)
+    {
+        Destroy(Items.FirstOrDefault(x => x.Item.Id == item.Id).gameObject);
+    }
+
     public void SelectItem(Guid id)
     {
         var item = Items.FirstOrDefault(x => x.GetComponent<ItemPanel>().Item.Id == id);
@@ -95,6 +105,5 @@ public class InventoryManager : MonoBehaviour
                 item.SelectionImage.sprite = EquippableSlotEquipped;
             }
         }
-
     }
 }

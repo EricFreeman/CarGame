@@ -25,8 +25,8 @@ public class EquippedPanel : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            DeSelectItem();
-            return;
+            UnequipItem();
+            _inventoryManager.AddItem(EquippedItem);
         }
         else
         {
@@ -43,11 +43,12 @@ public class EquippedPanel : MonoBehaviour
                 SelectionImage.sprite = SelectedSprite;
                 EquippedItemImage.sprite = item.Image;
                 EquippedItemImage.color = new Color(1, 1, 1, 1);
+                _inventoryManager.RemoveItem(EquippedItem);
             }
         }
     }
 
-    public void DeSelectItem()
+    public void UnequipItem()
     {
         EquippedItem = null;
         SelectionImage.sprite = EmptySprite;
