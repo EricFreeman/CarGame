@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 public class EquippedPanel : MonoBehaviour
 {
+    [HideInInspector]
     public Item EquippedItem;
+
     public ItemType ItemType;
     public Image SelectionImage;
     public Image EquippedItemImage;
