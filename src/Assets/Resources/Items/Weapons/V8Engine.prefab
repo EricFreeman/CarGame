@@ -42,7 +42,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: V8 Engine
   Description: It can do a 10 second quarter mile.
-  Type: 2
+  Type: 3
+  Image: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

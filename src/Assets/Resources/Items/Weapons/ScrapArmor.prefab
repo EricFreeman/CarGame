@@ -42,7 +42,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Scrap Armor
   Description: Offers minimal protection.
-  Type: 1
+  Type: 2
   Image: {fileID: 21300000, guid: 54b79154ad71ad646aa51b9ed7fa30ff, type: 3}
 --- !u!1001 &100100000
 Prefab:
