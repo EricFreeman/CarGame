@@ -26,7 +26,6 @@ public class EquippedPanel : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl))
         {
             UnequipItem();
-            _inventoryManager.AddItem(EquippedItem);
         }
         else
         {
@@ -55,6 +54,7 @@ public class EquippedPanel : MonoBehaviour
 
     public void UnequipItem()
     {
+        _inventoryManager.AddItem(EquippedItem);
         EquippedItem = null;
         SelectionImage.sprite = EmptySprite;
         EquippedItemImage.sprite = null;
