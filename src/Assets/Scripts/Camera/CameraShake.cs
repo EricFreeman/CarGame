@@ -15,6 +15,7 @@ namespace Assets.Scripts.Camera
         void Start()
         {
             Shaking = false;
+            OriginalPos = transform.localPosition;
             this.Register<ShakeCamera>();
         }
 
@@ -27,8 +28,8 @@ namespace Assets.Scripts.Camera
         {
             if (ShakeIntensity >= 0)
             {
-                transform.position = OriginalPos + Random.insideUnitSphere * ShakeIntensity;
-                transform.rotation = new Quaternion(OriginalRot.x + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
+                transform.localPosition = OriginalPos + Random.insideUnitSphere * ShakeIntensity;
+                transform.localRotation = new Quaternion(OriginalRot.x + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
                     OriginalRot.y + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
                     OriginalRot.z + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
                     OriginalRot.w + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f);
@@ -38,6 +39,8 @@ namespace Assets.Scripts.Camera
             else if (Shaking)
             {
                 Shaking = false;
+                transform.localPosition = OriginalPos;
+                transform.localRotation = OriginalRot;
             }
         }
 
@@ -45,8 +48,8 @@ namespace Assets.Scripts.Camera
         {
             if (!Shaking)
             {
-                OriginalPos = transform.position;
-                OriginalRot = transform.rotation;
+                OriginalPos = transform.localPosition;
+                OriginalRot = transform.localRotation;
             }
 
             ShakeIntensity = 0.3f;
