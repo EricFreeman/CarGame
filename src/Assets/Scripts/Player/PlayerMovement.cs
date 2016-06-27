@@ -6,10 +6,11 @@ namespace Assets.Scripts.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        public float Acceleration = 1f;
-        public float GroundFriction = .001f;
-        public float MagnitudeCutoff = .005f;
-        public float TurnSpeed = 30f;
+        public float Acceleration = .02f;
+        public float GroundFriction = .99f;
+        public float MagnitudeCutoff = .001f;
+        public float TurnSpeed = 15f;
+        public float MaxSpeed = .5f;
         
         public Vector3 Movement;
 
@@ -38,6 +39,11 @@ namespace Assets.Scripts.Player
                 }
             }
             Movement += newMovement;
+
+            if (Movement.magnitude > MaxSpeed)
+            {
+                Movement = Movement.normalized * MaxSpeed;
+            }
 
             transform.position += Movement * Time.timeScale;
         }
