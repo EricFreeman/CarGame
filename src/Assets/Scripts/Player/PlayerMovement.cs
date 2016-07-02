@@ -25,24 +25,31 @@ namespace Assets.Scripts.Player
             var horizontal = Input.GetAxisRaw("Horizontal") * Movement.magnitude * TurnSpeed * Time.timeScale;
             var veritcal = Input.GetAxisRaw("Vertical");
 
-            transform.Rotate(new Vector3(0, horizontal, 0));
-            var newMovement = transform.forward*Acceleration*veritcal;
-
-            RaycastHit hit;
-            var rayTest = Movement + newMovement;
-            var ray = new Ray(transform.position, rayTest.normalized * 2);
-            if (Physics.Raycast(ray, out hit))
+            if (veritcal < 0)
             {
-                if (hit.distance <= rayTest.magnitude + 1.5f)
-                {
-                    Bounce(hit.normal);
-                }
+                Movement *= .9f;
             }
-            Movement += newMovement;
-
-            if (Movement.magnitude > MaxSpeed)
+            else
             {
-                Movement = Movement.normalized * MaxSpeed;
+                transform.Rotate(new Vector3(0, horizontal, 0));
+                var newMovement = transform.forward * Acceleration * veritcal;
+
+                RaycastHit hit;
+                var rayTest = Movement + newMovement;
+                var ray = new Ray(transform.position, rayTest.normalized * 2);
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.distance <= rayTest.magnitude + 1.5f)
+                    {
+                        Bounce(hit.normal);
+                    }
+                }
+                Movement += newMovement;
+
+                if (Movement.magnitude > MaxSpeed)
+                {
+                    Movement = Movement.normalized * MaxSpeed;
+                }
             }
 
             transform.position += Movement * Time.timeScale;
