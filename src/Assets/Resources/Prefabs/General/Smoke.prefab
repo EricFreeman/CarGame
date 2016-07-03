@@ -13,9 +13,9 @@ GameObject:
   - 114: {fileID: 11406976}
   - 54: {fileID: 5405840}
   - 114: {fileID: 11445244}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Smoke
-  m_TagString: Untagged
+  m_TagString: Particle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeRemaining: 8
   CurrentTimeOverride: 6
+  FadeSpeed: 1
 --- !u!114 &11420408
 MonoBehaviour:
   m_ObjectHideFlags: 1

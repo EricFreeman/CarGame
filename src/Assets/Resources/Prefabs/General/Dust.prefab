@@ -12,9 +12,9 @@ GameObject:
   - 114: {fileID: 11433094}
   - 114: {fileID: 11413518}
   - 114: {fileID: 11444688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dust
-  m_TagString: Untagged
+  m_TagString: Particle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeRemaining: 2
   CurrentTimeOverride: 0.5
+  FadeSpeed: 1
 --- !u!114 &11433094
 MonoBehaviour:
   m_ObjectHideFlags: 1

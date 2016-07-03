@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 421732}
   - 212: {fileID: 21223068}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,9 +26,9 @@ GameObject:
   - 4: {fileID: 410752}
   - 54: {fileID: 5491024}
   - 114: {fileID: 11445270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle
-  m_TagString: Untagged
+  m_TagString: Particle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
