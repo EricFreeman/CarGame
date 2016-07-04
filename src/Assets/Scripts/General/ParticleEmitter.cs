@@ -74,11 +74,9 @@ namespace Assets.Scripts.General
                 obj.GetComponentInChildren<SpriteRenderer>().sprite = SpriteList.Random();
                 obj.transform.position = transform.position + new Vector3(0, .1f, 0);
 
-                var rigidBody = obj.GetComponent<Rigidbody>();
-                rigidBody.velocity = initialVelocity;
-                obj.GetComponent<Rigidbody>().AddForce(
-                    new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f))*particleForce,
-                    ForceMode.Impulse);
+                var particle = obj.GetComponent<Particle>();
+                particle.Velocity = initialVelocity + (
+                    new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f))*particleForce);
             }
         }
     }

@@ -24,8 +24,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410752}
-  - 54: {fileID: 5491024}
   - 114: {fileID: 11445270}
+  - 114: {fileID: 11450422}
   m_Layer: 8
   m_Name: Particle
   m_TagString: Particle
@@ -60,21 +60,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 410752}
   m_RootOrder: 0
---- !u!54 &5491024
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 183042}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 5
-  m_AngularDrag: 5
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 0
 --- !u!114 &11445270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,6 +71,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f3d928de68957469f3aa5cb068e075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11450422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f3f97807673fb45a81c08f71bc3c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Velocity: {x: 0, y: 0, z: 0}
+  Friction: 0.95
+  Cutoff: 0.001
 --- !u!212 &21223068
 SpriteRenderer:
   m_ObjectHideFlags: 1
