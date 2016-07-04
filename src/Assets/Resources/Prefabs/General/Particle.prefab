@@ -24,7 +24,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410752}
-  - 114: {fileID: 11445270}
   - 114: {fileID: 11450422}
   m_Layer: 8
   m_Name: Particle
@@ -60,17 +59,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 410752}
   m_RootOrder: 0
---- !u!114 &11445270
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 183042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48f3d928de68957469f3aa5cb068e075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11450422
 MonoBehaviour:
   m_ObjectHideFlags: 1
