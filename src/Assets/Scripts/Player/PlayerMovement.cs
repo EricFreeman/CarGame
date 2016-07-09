@@ -9,7 +9,8 @@ namespace Assets.Scripts.Player
         public float Acceleration = .02f;
         public float GroundFriction = .99f;
         public float MagnitudeCutoff = .001f;
-        public float TurnSpeed = 15f;
+        public float BoostTurnSpeed = 3f;
+        public float SlideTurnSpeed = 15f;
         public float MaxSpeed = .5f;
         
         public Vector3 Movement;
@@ -22,7 +23,6 @@ namespace Assets.Scripts.Player
 
         private void ApplyMovement()
         {
-            var horizontal = Input.GetAxisRaw("Horizontal") * Movement.magnitude * TurnSpeed * Time.timeScale;
             var veritcal = Input.GetAxisRaw("Vertical");
 
             if (veritcal < 0)
@@ -31,6 +31,8 @@ namespace Assets.Scripts.Player
             }
             else
             {
+                var horizontal = Input.GetAxisRaw("Horizontal") * Movement.magnitude * (veritcal > .01f ? BoostTurnSpeed : SlideTurnSpeed) * Time.timeScale;
+
                 transform.Rotate(new Vector3(0, horizontal, 0));
                 var newMovement = transform.forward * Acceleration * veritcal;
 
