@@ -12,6 +12,7 @@ namespace Assets.Scripts.Enemies
         public Sprite Destroyed;
         public ParticleEmitter PartsEmitter;
         public ParticleEmitter SmokeEmitter;
+        public GameObject Explosion;
 
         [HideInInspector]
         public int CurrentHealth;
@@ -70,6 +71,9 @@ namespace Assets.Scripts.Enemies
                 rigidBody.velocity = currentVelocity;
 
                 PartsEmitter.Fire(currentVelocity, 20, Random.Range(5, 10));
+
+                var explosion = Instantiate(Explosion);
+                explosion.transform.position = transform.position;
             }
         }
     }
