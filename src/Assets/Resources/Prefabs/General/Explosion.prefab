@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 21223516}
-  FramesPerSeconds: 16
+  FramesPerSeconds: 24
 --- !u!114 &11436970
 MonoBehaviour:
   m_ObjectHideFlags: 1

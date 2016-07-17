@@ -14,7 +14,7 @@ namespace Assets.Scripts.General
 
         private int _currentFrame;
         private float _timeOnFrame;
-        private bool _isOneShot;
+        private AnimationType _animationType;
 
         void Update()
         {
@@ -28,13 +28,13 @@ namespace Assets.Scripts.General
 
                 if (_currentFrame >= _currentAnimation.Count)
                 {
-                    if (_isOneShot)
+                    if (_animationType == AnimationType.DestroyWhenComplete)
                     {
-                        _currentFrame--;
+                        Destroy(gameObject);
                         return;
                     }
 
-                    _currentFrame = 0;
+                        _currentFrame = 0;
                     if (_previousAnimation != null)
                     {
                         _currentAnimation = _previousAnimation;
@@ -46,9 +46,14 @@ namespace Assets.Scripts.General
             SpriteRenderer.sprite = _currentAnimation[_currentFrame];
         }
 
-        public void PlayAnimation(List<Sprite> anim, bool isOneShot = false)
+        public void PlayAnimation(List<Sprite> anim, AnimationType animationType)
         {
-            _isOneShot = isOneShot;
+            _animationType = animationType;
+
+            if (_animationType == AnimationType.OneOff)
+            {
+                _previousAnimation = _currentAnimation;
+            }
 
             _currentAnimation = anim;
             _currentFrame = 0;

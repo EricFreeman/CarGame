@@ -10,7 +10,7 @@ namespace Assets.Scripts.General
         void Start ()
         {
             var ac = GetComponent<AnimationController>();
-            ac.PlayAnimation(Animation, true);
+            ac.PlayAnimation(Animation, AnimationType.DestroyWhenComplete);
         }
     }
 }
