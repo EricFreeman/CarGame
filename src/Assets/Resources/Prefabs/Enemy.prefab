@@ -77,6 +77,7 @@ GameObject:
   - 54: {fileID: 5447680}
   - 65: {fileID: 6576396}
   - 114: {fileID: 11403220}
+  - 114: {fileID: 11455658}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -379,6 +380,15 @@ MonoBehaviour:
   PartsEmitter: {fileID: 11462350}
   SmokeEmitter: {fileID: 11482012}
   Explosion: {fileID: 174034, guid: 26c2f41181a33cd468e0374ca3d789eb, type: 2}
+  EnemyAnimation:
+  - {fileID: 21300000, guid: 25832767ead14494fa1642a8bec116b4, type: 3}
+  EnemyDamagedAnimation:
+  - {fileID: 21300002, guid: 25832767ead14494fa1642a8bec116b4, type: 3}
+  - {fileID: 21300002, guid: 25832767ead14494fa1642a8bec116b4, type: 3}
+  - {fileID: 21300002, guid: 25832767ead14494fa1642a8bec116b4, type: 3}
+  EnemyDeadAnimation:
+  - {fileID: 21300004, guid: 25832767ead14494fa1642a8bec116b4, type: 3}
+  AnimationController: {fileID: 11455658}
   CurrentHealth: 10
   SmokeDelay: 0.01
 --- !u!114 &11409388
@@ -433,6 +443,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxChangeOffsetTime: 2
   MaxOffsetAmount: 10
+--- !u!114 &11455658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7bbe291dad802f44bed289dfe8b1bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpriteRenderer: {fileID: 21273788}
+  FramesPerSeconds: 24
 --- !u!114 &11456796
 MonoBehaviour:
   m_ObjectHideFlags: 1

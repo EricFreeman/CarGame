@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.General;
+﻿using System.Collections.Generic;
+using Assets.Scripts.General;
 using Assets.Scripts.Messages;
 using UnityEngine;
 using UnityEventAggregator;
@@ -14,6 +15,11 @@ namespace Assets.Scripts.Enemies
         public ParticleEmitter SmokeEmitter;
         public GameObject Explosion;
 
+        public List<Sprite> EnemyAnimation;
+        public List<Sprite> EnemyDamagedAnimation;
+        public List<Sprite> EnemyDeadAnimation;
+        public AnimationController AnimationController;
+
         [HideInInspector]
         public int CurrentHealth;
 
@@ -26,6 +32,7 @@ namespace Assets.Scripts.Enemies
         {
             CurrentHealth = MaxHealth;
             _currentSmokeDelay = SmokeDelay;
+            AnimationController.PlayAnimation(EnemyAnimation, AnimationType.Loop);
         }
 
         void Update()
@@ -50,12 +57,17 @@ namespace Assets.Scripts.Enemies
             {
                 Die(context);
             }
+            else
+            {
+                AnimationController.PlayAnimation(EnemyDamagedAnimation, AnimationType.OneOff);
+            }
         }
 
         public void Die(DamageContext context)
         {
             if (!_isDead)
             {
+                AnimationController.PlayAnimation(EnemyDeadAnimation, AnimationType.Loop);
                 EventAggregator.SendMessage(new ShakeCamera());
                 EventAggregator.SendMessage(new EnemyDied());
                 _isDead = true;

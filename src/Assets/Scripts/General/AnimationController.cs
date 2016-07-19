@@ -8,13 +8,15 @@ namespace Assets.Scripts.General
         public SpriteRenderer SpriteRenderer;
 
         private List<Sprite> _currentAnimation;
+        private AnimationType _animationType;
+
         private List<Sprite> _previousAnimation;
+        private AnimationType? _previousAnimationType;
 
         public float FramesPerSeconds;
 
         private int _currentFrame;
         private float _timeOnFrame;
-        private AnimationType _animationType;
 
         void Update()
         {
@@ -33,27 +35,38 @@ namespace Assets.Scripts.General
                         Destroy(gameObject);
                         return;
                     }
-
-                        _currentFrame = 0;
-                    if (_previousAnimation != null)
+                    else if (_animationType == AnimationType.OneOff)
                     {
+                        _animationType = AnimationType.Loop;
                         _currentAnimation = _previousAnimation;
                         _previousAnimation = null;
+                        _previousAnimationType = null;
                     }
+
+                    _currentFrame = 0;
                 }
             }
 
-            SpriteRenderer.sprite = _currentAnimation[_currentFrame];
+            if (_currentAnimation != null)
+            {
+                SpriteRenderer.sprite = _currentAnimation[_currentFrame];
+            }
         }
 
         public void PlayAnimation(List<Sprite> anim, AnimationType animationType)
         {
-            _animationType = animationType;
+            if (animationType == AnimationType.OneOff && _previousAnimationType == AnimationType.OneOff)
+            {
+                return;
+            }
 
-            if (_animationType == AnimationType.OneOff)
+            if (animationType == AnimationType.OneOff)
             {
                 _previousAnimation = _currentAnimation;
             }
+
+            _animationType = animationType;
+            _previousAnimationType = _animationType;
 
             _currentAnimation = anim;
             _currentFrame = 0;
