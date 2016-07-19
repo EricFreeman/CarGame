@@ -57,6 +57,7 @@ namespace Assets.Scripts.Enemies
             if (!_isDead)
             {
                 EventAggregator.SendMessage(new ShakeCamera());
+                EventAggregator.SendMessage(new EnemyDied());
                 _isDead = true;
 
                 var navMesh = GetComponent<NavMeshAgent>();

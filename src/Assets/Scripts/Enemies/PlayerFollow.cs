@@ -4,7 +4,7 @@ namespace Assets.Scripts.Enemies
 {
     public class PlayerFollow : MonoBehaviour
     {
-        public GameObject Player;
+        private GameObject _player;
         public float MaxChangeOffsetTime = 5f;
         public float MaxOffsetAmount = 10f;
 
@@ -14,6 +14,7 @@ namespace Assets.Scripts.Enemies
         void Start()
         {
             _currentChangeOffsetTime = Random.Range(1, MaxChangeOffsetTime);
+            _player = GameObject.Find("Player");
         }
 
         void Update()
@@ -26,7 +27,7 @@ namespace Assets.Scripts.Enemies
                 _offset = new Vector3(Random.Range(-MaxOffsetAmount, MaxOffsetAmount), 0, Random.Range(-MaxOffsetAmount, MaxOffsetAmount));
             }
 
-            GetComponent<NavMeshAgent>().destination = Player.transform.position + _offset;
+            GetComponent<NavMeshAgent>().destination = _player.transform.position + _offset;
         }
     }
 }
