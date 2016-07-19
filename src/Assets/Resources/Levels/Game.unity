@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletGameObject: {fileID: 120404, guid: 4a0a7b2ec10752e4db396e35aa79caa5, type: 2}
   ShotCooldown: 0.1
+  Accuracy: 7.5
 --- !u!1 &268587015
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +404,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 559166414}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20d825f33607c8d448415904057f21f9, type: 3}
   m_Name: 
@@ -506,7 +507,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 635216475}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20d825f33607c8d448415904057f21f9, type: 3}
   m_Name: 
@@ -606,7 +607,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 813963973}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20d825f33607c8d448415904057f21f9, type: 3}
   m_Name: 
@@ -1000,7 +1001,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1329023180}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20d825f33607c8d448415904057f21f9, type: 3}
   m_Name: 

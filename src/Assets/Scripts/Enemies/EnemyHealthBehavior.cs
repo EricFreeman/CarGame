@@ -33,7 +33,7 @@ namespace Assets.Scripts.Enemies
             if (CurrentHealth < MaxHealth)
             {
                 _currentSmokeDelay -= Time.deltaTime;
-                if (_currentSmokeDelay <= 0)
+                if (_currentSmokeDelay <= 0 && !_isDead)
                 {
                     _currentSmokeDelay = SmokeDelay;
                     SmokeEmitter.Fire((float) CurrentHealth < 0 ? 0 : CurrentHealth/(float) MaxHealth);

@@ -6,6 +6,7 @@ namespace Assets.Scripts.Weapons
     {
         public GameObject BulletGameObject;
         public float ShotCooldown;
+        public float Accuracy;
 
         private float _shotCooldown;
 
@@ -21,7 +22,7 @@ namespace Assets.Scripts.Weapons
                 _shotCooldown = ShotCooldown;
                 var bullet = Instantiate(BulletGameObject);
                 bullet.transform.position = transform.position;
-                bullet.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y/2, 0);
+                bullet.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y/2 + Random.Range(-Accuracy, Accuracy), 0);
             }
         }
     }
