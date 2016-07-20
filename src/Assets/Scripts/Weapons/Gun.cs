@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Messages;
+using UnityEngine;
+using UnityEventAggregator;
 
 namespace Assets.Scripts.Weapons
 {
@@ -35,6 +37,8 @@ namespace Assets.Scripts.Weapons
                 _audioSource.PlayOneShot(BulletSound);
                 _audioSource.pitch = 1 + Random.Range(-_pitchRandom, _pitchRandom);
                 _audioSource.volume = 1 - Random.Range(0, _volumeRandom);
+
+                EventAggregator.SendMessage(new ShakeCamera(.04f));
             }
         }
     }

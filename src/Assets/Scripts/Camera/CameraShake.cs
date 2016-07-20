@@ -7,15 +7,15 @@ namespace Assets.Scripts.Camera
     public class CameraShake : MonoBehaviour, IListener<ShakeCamera>
     {
         public bool Shaking;
-        private float ShakeDecay;
-        private float ShakeIntensity;
-        private Vector3 OriginalPos;
-        private Quaternion OriginalRot;
+        private float _shakeDecay;
+        private float _shakeIntensity;
+        private Vector3 _originalPos;
+        private Quaternion _originalRot;
 
         void Start()
         {
             Shaking = false;
-            OriginalPos = transform.localPosition;
+            _originalPos = transform.localPosition;
             this.Register<ShakeCamera>();
         }
 
@@ -26,21 +26,21 @@ namespace Assets.Scripts.Camera
 
         void Update()
         {
-            if (ShakeIntensity >= 0)
+            if (_shakeIntensity >= 0)
             {
-                transform.localPosition = OriginalPos + Random.insideUnitSphere * ShakeIntensity;
-                transform.localRotation = new Quaternion(OriginalRot.x + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
-                    OriginalRot.y + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
-                    OriginalRot.z + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
-                    OriginalRot.w + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f);
+                transform.localPosition = _originalPos + Random.insideUnitSphere * _shakeIntensity;
+                transform.localRotation = new Quaternion(_originalRot.x + Random.Range(-_shakeIntensity, _shakeIntensity) * .2f,
+                    _originalRot.y + Random.Range(-_shakeIntensity, _shakeIntensity) * .2f,
+                    _originalRot.z + Random.Range(-_shakeIntensity, _shakeIntensity) * .2f,
+                    _originalRot.w + Random.Range(-_shakeIntensity, _shakeIntensity) * .2f);
 
-                ShakeIntensity -= ShakeDecay;
+                _shakeIntensity -= _shakeDecay;
             }
             else if (Shaking)
             {
                 Shaking = false;
-                transform.localPosition = OriginalPos;
-                transform.localRotation = OriginalRot;
+                transform.localPosition = _originalPos;
+                transform.localRotation = _originalRot;
             }
         }
 
@@ -48,12 +48,12 @@ namespace Assets.Scripts.Camera
         {
             if (!Shaking)
             {
-                OriginalPos = transform.localPosition;
-                OriginalRot = transform.localRotation;
+                _originalPos = transform.localPosition;
+                _originalRot = transform.localRotation;
             }
 
-            ShakeIntensity = 0.3f;
-            ShakeDecay = 0.02f;
+            _shakeIntensity = message.ShakeIntensity;
+            _shakeDecay = message.ShakeDecay;
             Shaking = true;
         }
     }

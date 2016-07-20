@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Assets.Scripts.Extensions;
 using UnityEngine;
 
@@ -18,6 +19,19 @@ namespace Assets.Scripts.Player
         public AudioClip EngineLoop;
         public AudioClip EngineGas;
 
+        private AudioSource _engineGas;
+        private AudioSource _engineLoop;
+
+        void Start()
+        {
+            _engineGas = gameObject.AddComponent<AudioSource>();
+            _engineGas.clip = EngineGas;
+
+            _engineLoop = gameObject.AddComponent<AudioSource>();
+            _engineLoop.clip = EngineLoop;
+            _engineLoop.loop = true;
+        }
+
         void Update()
         {
             ApplyFriction();
@@ -30,10 +44,17 @@ namespace Assets.Scripts.Player
 
             if (vertical < 0)
             {
-                Movement *= .9f;
+                Movement *= .9f;  
             }
             else
             {
+                if (Math.Abs(vertical) < .1f)
+                {
+                    _engineLoop.Stop();
+                    _engineGas.Stop();
+                    _engineLoop.pitch = .75f;
+                }
+
                 var horizontal = Input.GetAxisRaw("Horizontal") * Movement.magnitude * (vertical > .01f ? BoostTurnSpeed : SlideTurnSpeed) * Time.timeScale;
 
                 transform.Rotate(new Vector3(0, horizontal, 0));
@@ -51,6 +72,8 @@ namespace Assets.Scripts.Player
                 }
                 Movement += newMovement;
 
+                PlayEngineNoises(newMovement.magnitude);
+
                 if (Movement.magnitude > MaxSpeed)
                 {
                     Movement = Movement.normalized * MaxSpeed;
@@ -58,6 +81,26 @@ namespace Assets.Scripts.Player
             }
 
             transform.position += Movement * Time.timeScale;
+        }
+
+        private float _previousMovement;
+        private void PlayEngineNoises(float newMovement)
+        {
+            if (newMovement > 0)
+            {
+                _engineLoop.pitch = Mathf.Min(_engineLoop.pitch + newMovement, 1);
+                if (!_engineLoop.isPlaying)
+                {
+                    _engineLoop.Play();
+                }
+
+                if (Math.Abs(_previousMovement) < .01f && newMovement > .01f)
+                {
+                    _engineGas.Play();
+                }
+            }
+
+            _previousMovement = newMovement;
         }
 
         void OnCollisionEnter(Collision collision)
