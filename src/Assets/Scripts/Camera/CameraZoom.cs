@@ -14,22 +14,16 @@ namespace Assets.Scripts.Camera
         {
             _previousPosition = transform.position;
             _camera = UnityEngine.Camera.main;
+            DefaultSize = UnityEngine.Camera.main.orthographicSize;
         }
 
         void Update ()
         {
-            if (Time.fixedTime < 1)
-            {
-                DefaultSize = UnityEngine.Camera.main.orthographicSize;
-            }
-            else
-            {
-                var delta = Vector3.Distance(_previousPosition, transform.position);
-                var currentVelocity = 0f;
-                _camera.orthographicSize = Mathf.SmoothDamp(_camera.orthographicSize, DefaultSize + (delta * 10), ref currentVelocity, 5f * Time.deltaTime);
-                
-                _previousPosition = transform.position;
-            }
+            var delta = Vector3.Distance(_previousPosition, transform.position);
+            var currentVelocity = 0f;
+            _camera.orthographicSize = Mathf.SmoothDamp(_camera.orthographicSize, DefaultSize + (delta * 10), ref currentVelocity, 5f * Time.deltaTime);
+            
+            _previousPosition = transform.position;
         }
     }
 }

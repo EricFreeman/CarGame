@@ -23,6 +23,8 @@ namespace Assets.Scripts.Enemies
         public AudioClip EnemyHitSound;
         public AudioClip EnemyDieSound;
 
+        public GameObject Ricochet;
+
         [HideInInspector]
         public int CurrentHealth;
 
@@ -61,6 +63,9 @@ namespace Assets.Scripts.Enemies
             CurrentHealth -= context.Damage;
             PartsEmitter.Fire(Vector3.zero, 20, Random.Range(1, 3));
 
+            CreateRicochet(context);
+            PlayClip(EnemyHitSound);
+
             if (CurrentHealth <= 0)
             {
                 Die(context);
@@ -68,8 +73,16 @@ namespace Assets.Scripts.Enemies
             else
             {
                 AnimationController.PlayAnimation(EnemyDamagedAnimation, AnimationType.OneOff);
-                PlayClip(EnemyHitSound);
             }
+        }
+
+        private void CreateRicochet(DamageContext context)
+        {
+            var ricochet = Instantiate(Ricochet);
+            ricochet.transform.position = context.Position;
+            ricochet.transform.rotation = Quaternion.LookRotation(context.Direction, transform.up);
+            ricochet.transform.Rotate(0, 180, 0);
+            ricochet.transform.SetParent(transform);
         }
 
         private void PlayClip(AudioClip clip)

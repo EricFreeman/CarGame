@@ -18,11 +18,12 @@ namespace Assets.Scripts.Weapons
         {
             if (collider.tag == "Enemy")
             {
-                var context = new DamageContext()
+                var context = new DamageContext
                 {
                     Damage = Damage,
                     Force = Speed,
-                    Direction = transform.forward
+                    Direction = transform.forward,
+                    Position = transform.position
                 };
 
                 var health = collider.GetComponent<EnemyHealthBehavior>();

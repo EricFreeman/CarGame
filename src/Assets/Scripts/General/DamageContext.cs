@@ -7,5 +7,6 @@ namespace Assets.Scripts.General
         public int Damage;
         public Vector3 Direction;
         public float Force;
+        public Vector3 Position;
     }
 }
