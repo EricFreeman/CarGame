@@ -38,7 +38,7 @@ namespace Assets.Scripts.Weapons
                 _audioSource.pitch = 1 + Random.Range(-_pitchRandom, _pitchRandom);
                 _audioSource.volume = 1 - Random.Range(0, _volumeRandom);
 
-                EventAggregator.SendMessage(new ShakeCamera(.04f));
+                EventAggregator.SendMessage(new KickBackCamera { KickAmount = .5f, Direction = transform.forward * -1 });
             }
         }
     }

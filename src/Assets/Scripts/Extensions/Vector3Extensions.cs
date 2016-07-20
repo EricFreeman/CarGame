@@ -10,5 +10,10 @@ namespace Assets.Scripts.Extensions
         {
             return vectors.Aggregate(Vector3.zero, (current, vector3) => current + vector3) / vectors.Count();
         }
+
+        public static Vector3 MoveTowards(this Vector3 current, Vector3 target, float maxDistanceDelta)
+        {
+            return Vector3.MoveTowards(current, target, maxDistanceDelta);
+        }
     }
 }
