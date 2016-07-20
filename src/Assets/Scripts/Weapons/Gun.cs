@@ -7,6 +7,7 @@ namespace Assets.Scripts.Weapons
     public class Gun : MonoBehaviour
     {
         public GameObject BulletGameObject;
+        public GameObject Tip;
         public AudioClip BulletSound;
         public float ShotCooldown;
         public float Accuracy;
@@ -32,7 +33,7 @@ namespace Assets.Scripts.Weapons
             {
                 _shotCooldown = ShotCooldown;
                 var bullet = Instantiate(BulletGameObject);
-                bullet.transform.position = transform.position;
+                bullet.transform.position = Tip.transform.position;
                 bullet.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y/2 + Random.Range(-Accuracy, Accuracy), 0);
                 _audioSource.PlayOneShot(BulletSound);
                 _audioSource.pitch = 1 + Random.Range(-_pitchRandom, _pitchRandom);
