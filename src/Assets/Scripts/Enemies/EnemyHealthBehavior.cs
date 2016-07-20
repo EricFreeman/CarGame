@@ -20,6 +20,9 @@ namespace Assets.Scripts.Enemies
         public List<Sprite> EnemyDeadAnimation;
         public AnimationController AnimationController;
 
+        public AudioClip EnemyHitSound;
+        public AudioClip EnemyDieSound;
+
         [HideInInspector]
         public int CurrentHealth;
 
@@ -28,11 +31,16 @@ namespace Assets.Scripts.Enemies
 
         private bool _isDead;
 
+        private AudioSource _audioSource;
+        private float _pitchRandom = .05f;
+        private float _volumeRandom = .15f;
+
         void Start()
         {
             CurrentHealth = MaxHealth;
             _currentSmokeDelay = SmokeDelay;
             AnimationController.PlayAnimation(EnemyAnimation, AnimationType.Loop);
+            _audioSource = gameObject.AddComponent<AudioSource>();
         }
 
         void Update()
@@ -60,13 +68,22 @@ namespace Assets.Scripts.Enemies
             else
             {
                 AnimationController.PlayAnimation(EnemyDamagedAnimation, AnimationType.OneOff);
+                PlayClip(EnemyHitSound);
             }
+        }
+
+        private void PlayClip(AudioClip clip)
+        {
+            _audioSource.PlayOneShot(clip);
+            _audioSource.pitch = 1 + Random.Range(-_pitchRandom, _pitchRandom);
+            _audioSource.volume = 1 - Random.Range(0, _volumeRandom);
         }
 
         public void Die(DamageContext context)
         {
             if (!_isDead)
             {
+                PlayClip(EnemyDieSound);
                 AnimationController.PlayAnimation(EnemyDeadAnimation, AnimationType.Loop);
                 EventAggregator.SendMessage(new ShakeCamera());
                 EventAggregator.SendMessage(new EnemyDied());

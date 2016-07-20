@@ -389,6 +389,8 @@ MonoBehaviour:
   EnemyDeadAnimation:
   - {fileID: 21300004, guid: 25832767ead14494fa1642a8bec116b4, type: 3}
   AnimationController: {fileID: 11455658}
+  EnemyHitSound: {fileID: 8300000, guid: 9dfebd15d8263254d9c82badf68d22b3, type: 3}
+  EnemyDieSound: {fileID: 8300000, guid: 44cdc635f2b50ed458c8adf148da9297, type: 3}
   CurrentHealth: 10
   SmokeDelay: 0.01
 --- !u!114 &11409388

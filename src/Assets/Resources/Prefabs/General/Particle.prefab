@@ -25,6 +25,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 410752}
   - 114: {fileID: 11450422}
+  - 114: {fileID: 11449238}
   m_Layer: 8
   m_Name: Particle
   m_TagString: Particle
@@ -59,6 +60,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 410752}
   m_RootOrder: 0
+--- !u!114 &11449238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58937892bdbcc2c4d8052f57aace6996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeRemaining: 8
+  CurrentTimeOverride: -1
+  FadeSpeed: 1
 --- !u!114 &11450422
 MonoBehaviour:
   m_ObjectHideFlags: 1

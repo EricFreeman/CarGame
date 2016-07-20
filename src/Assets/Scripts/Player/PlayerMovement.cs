@@ -15,6 +15,9 @@ namespace Assets.Scripts.Player
         
         public Vector3 Movement;
 
+        public AudioClip EngineLoop;
+        public AudioClip EngineGas;
+
         void Update()
         {
             ApplyFriction();
@@ -23,18 +26,18 @@ namespace Assets.Scripts.Player
 
         private void ApplyMovement()
         {
-            var veritcal = Input.GetAxisRaw("Vertical");
+            var vertical = Input.GetAxisRaw("Vertical");
 
-            if (veritcal < 0)
+            if (vertical < 0)
             {
                 Movement *= .9f;
             }
             else
             {
-                var horizontal = Input.GetAxisRaw("Horizontal") * Movement.magnitude * (veritcal > .01f ? BoostTurnSpeed : SlideTurnSpeed) * Time.timeScale;
+                var horizontal = Input.GetAxisRaw("Horizontal") * Movement.magnitude * (vertical > .01f ? BoostTurnSpeed : SlideTurnSpeed) * Time.timeScale;
 
                 transform.Rotate(new Vector3(0, horizontal, 0));
-                var newMovement = transform.forward * Acceleration * veritcal;
+                var newMovement = transform.forward * Acceleration * vertical;
 
                 RaycastHit hit;
                 var rayTest = Movement + newMovement;

@@ -13,7 +13,7 @@ namespace Assets.Scripts.General
 
         void Start()
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             _currentTimeRemaining = CurrentTimeOverride >= 0 ? CurrentTimeOverride : TimeRemaining;
 
             var color = _spriteRenderer.color;
