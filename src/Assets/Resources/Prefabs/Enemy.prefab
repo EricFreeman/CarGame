@@ -523,6 +523,7 @@ MonoBehaviour:
   EnemyHitSound: {fileID: 8300000, guid: 9dfebd15d8263254d9c82badf68d22b3, type: 3}
   EnemyDieSound: {fileID: 8300000, guid: 44cdc635f2b50ed458c8adf148da9297, type: 3}
   Ricochet: {fileID: 159502, guid: fe6fd9be899723c449076d90d2148574, type: 2}
+  Crater: {fileID: 182032, guid: 28d8fa0e7cc5d294697174fea660354f, type: 2}
   CurrentHealth: 10
   SmokeDelay: 0.01
 --- !u!114 &11409388

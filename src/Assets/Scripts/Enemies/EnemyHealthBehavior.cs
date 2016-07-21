@@ -24,6 +24,7 @@ namespace Assets.Scripts.Enemies
         public AudioClip EnemyDieSound;
 
         public GameObject Ricochet;
+        public GameObject Crater;
 
         [HideInInspector]
         public int CurrentHealth;
@@ -117,6 +118,10 @@ namespace Assets.Scripts.Enemies
 
                 var explosion = Instantiate(Explosion);
                 explosion.transform.position = transform.position;
+
+                var crater = Instantiate(Crater);
+                crater.transform.position = transform.position;
+                crater.transform.rotation = transform.rotation;
             }
         }
     }
