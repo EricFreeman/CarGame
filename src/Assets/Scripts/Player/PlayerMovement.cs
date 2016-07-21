@@ -44,7 +44,7 @@ namespace Assets.Scripts.Player
 
             if (vertical < 0)
             {
-                Movement *= .9f;  
+                //Movement *= .9f;
             }
             else
             {

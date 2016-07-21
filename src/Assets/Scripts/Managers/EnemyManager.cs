@@ -9,8 +9,8 @@ namespace Assets.Scripts.Managers
         public GameObject Enemy;
 
         private GameObject _player;
-        private int _spawnCounter = 5;
-        private int _roundCounter = 5;
+        private int _spawnCounter = 15;
+        private int _roundCounter = 15;
 
         void Start()
         {
