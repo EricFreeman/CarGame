@@ -41,7 +41,7 @@ namespace Assets.Scripts.Enemies
         {
             CurrentHealth = MaxHealth;
             _currentSmokeDelay = SmokeDelay;
-            AnimationController.PlayAnimation(EnemyAnimation, AnimationType.Loop);
+//            AnimationController.PlayAnimation(EnemyAnimation, AnimationType.Loop);
             _audioSource = gameObject.AddComponent<AudioSource>();
         }
 
@@ -72,7 +72,7 @@ namespace Assets.Scripts.Enemies
             }
             else
             {
-                AnimationController.PlayAnimation(EnemyDamagedAnimation, AnimationType.OneOff);
+//                AnimationController.PlayAnimation(EnemyDamagedAnimation, AnimationType.OneOff);
             }
         }
 
@@ -97,7 +97,7 @@ namespace Assets.Scripts.Enemies
             if (!_isDead)
             {
                 PlayClip(EnemyDieSound);
-                AnimationController.PlayAnimation(EnemyDeadAnimation, AnimationType.Loop);
+//                AnimationController.PlayAnimation(EnemyDeadAnimation, AnimationType.Loop);
                 EventAggregator.SendMessage(new ShakeCamera());
                 EventAggregator.SendMessage(new EnemyDied());
                 _isDead = true;

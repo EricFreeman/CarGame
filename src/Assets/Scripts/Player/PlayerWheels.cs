@@ -14,14 +14,14 @@ namespace Assets.Scripts.Player
 
             if (turnAmount < 0)
             {
-                desiredAngle = -MaxRotation;
+                desiredAngle = MaxRotation;
             }
             else if (turnAmount > 0)
             {
-                desiredAngle = MaxRotation;
+                desiredAngle = -MaxRotation;
             }
 
-            transform.localRotation = Quaternion.Euler(0, Mathf.MoveTowardsAngle(transform.localEulerAngles.y, desiredAngle, TurnSpeed * Time.deltaTime), 0);
+            transform.localRotation = Quaternion.Euler(0, 0, Mathf.MoveTowardsAngle(transform.localEulerAngles.z, desiredAngle, TurnSpeed * Time.deltaTime));
         }
     }
 }
