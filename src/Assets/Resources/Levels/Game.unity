@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletGameObject: {fileID: 120404, guid: 4a0a7b2ec10752e4db396e35aa79caa5, type: 2}
   Tip: {fileID: 1309443619}
+  MuzzleFlare: {fileID: 168222, guid: 06a1f9b517c3d0d4aa84959e591c7897, type: 2}
   BulletSound: {fileID: 8300000, guid: ec020d845e829114788ace0cbf8f404f, type: 3}
   ShotCooldown: 0.1
   Accuracy: 7.5

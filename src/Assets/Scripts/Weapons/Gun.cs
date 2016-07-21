@@ -8,6 +8,7 @@ namespace Assets.Scripts.Weapons
     {
         public GameObject BulletGameObject;
         public GameObject Tip;
+        public GameObject MuzzleFlare;
         public AudioClip BulletSound;
         public float ShotCooldown;
         public float Accuracy;
@@ -39,8 +40,23 @@ namespace Assets.Scripts.Weapons
                 _audioSource.pitch = 1 + Random.Range(-_pitchRandom, _pitchRandom);
                 _audioSource.volume = 1 - Random.Range(0, _volumeRandom);
 
+                SpawnMuzzleFlare();
+
                 EventAggregator.SendMessage(new KickBackCamera { KickAmount = .5f, Direction = transform.forward * -1 });
             }
+        }
+
+        private void SpawnMuzzleFlare()
+        {
+            if (MuzzleFlare == null)
+            {
+                return;
+            }
+
+            var muzzleFlare = Instantiate(MuzzleFlare);
+            muzzleFlare.transform.position = Tip.transform.position;
+            muzzleFlare.transform.rotation = Tip.transform.rotation;
+            muzzleFlare.transform.SetParent(Tip.transform);
         }
     }
 }
