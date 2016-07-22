@@ -39,9 +39,15 @@ namespace Assets.Scripts.General
                     var obj = Instantiate(ParticleGameObject);
                     obj.GetComponentInChildren<SpriteRenderer>().sprite = SpriteList.Random();
                     obj.transform.position = transform.position + new Vector3(0, .1f, 0);
-                    obj.GetComponent<Rigidbody>().AddForce(
-                        new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * ParticleForce, 
-                        ForceMode.Impulse);
+
+                    var rigidBody = obj.GetComponent<Rigidbody>();
+                    if (rigidBody != null)
+                    {
+                        rigidBody.AddForce(
+                            new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f))*
+                            ParticleForce,
+                            ForceMode.Impulse);
+                    }
                 }
             }
         }
@@ -56,9 +62,14 @@ namespace Assets.Scripts.General
             spriteRenderer.color = new Color(color.r * colorMultiplier, color.g * colorMultiplier, color.b * colorMultiplier, 1);
 
             obj.transform.position = transform.position + new Vector3(0, .1f, 0);
-            obj.GetComponent<Rigidbody>().AddForce(
-                new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * ParticleForce,
-                ForceMode.Impulse);
+
+            var rigidBody = obj.GetComponent<Rigidbody>();
+            if (rigidBody != null)
+            {
+                rigidBody.AddForce(
+                    new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f))*ParticleForce,
+                    ForceMode.Impulse);
+            }
         }
 
         public void Fire()

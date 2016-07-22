@@ -7,7 +7,6 @@ namespace Assets.Scripts.General
         void Start()
         {
             var nextLayer = StaticBullshitHack.GetNextCraterSortingOrder();
-            Debug.Log(nextLayer);
             GetComponentInChildren<SpriteRenderer>().sortingOrder = nextLayer;
         }
     }

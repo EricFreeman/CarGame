@@ -525,7 +525,7 @@ MonoBehaviour:
   Ricochet: {fileID: 159502, guid: fe6fd9be899723c449076d90d2148574, type: 2}
   Crater: {fileID: 182032, guid: 28d8fa0e7cc5d294697174fea660354f, type: 2}
   CurrentHealth: 10
-  SmokeDelay: 0.01
+  SmokeDelay: 0.05
 --- !u!114 &11409388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -631,13 +631,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d0d2ff85489e34da2f5d24d4725531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOneShot: 1
+  IsOneShot: 0
   IsSelfFire: 0
-  SpawnsPerSecond: 0
+  SpawnsPerSecond: 1
   ParticleForce: 5
   ParticleGameObject: {fileID: 171786, guid: c7b9499833cf00d44b9b3f9863f13353, type: 2}
   SpriteList:
-  - {fileID: 21300000, guid: 4a58e0bf0e27b804786b0e058c90d2f8, type: 3}
+  - {fileID: 21300000, guid: eeac825aa73b6dc468a624a2b7298a22, type: 3}
 --- !u!195 &19532064
 NavMeshAgent:
   m_ObjectHideFlags: 1

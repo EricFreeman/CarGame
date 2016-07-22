@@ -1,23 +1,35 @@
 ﻿using UnityEngine;
 
-public class Particle : MonoBehaviour
+namespace Assets.Scripts.General
 {
-    [HideInInspector]
-    public Vector3 Velocity;
-
-    public float Friction = .95f;
-    public float Cutoff = .001f;
-
-    void Update()
+    public class Particle : MonoBehaviour
     {
-        Velocity.y = 0;
+        [HideInInspector]
+        public Vector3 Velocity;
 
-        transform.Translate(Velocity * Time.deltaTime);
-        Velocity *= Friction;
+        public float Friction = .95f;
+        public float Cutoff = .001f;
+        public bool DestroyOnRest = true;
 
-        if(Velocity.magnitude < Cutoff)
+        private bool _isResting;
+
+        void Update()
         {
-            Destroy(GetComponent<Particle>());
+            if (_isResting)
+            {
+                return;
+            }
+
+            Velocity.y = 0;
+
+            transform.Translate(Velocity * Time.deltaTime);
+            Velocity *= Friction;
+
+            if(Velocity.magnitude < Cutoff && DestroyOnRest)
+            {
+                _isResting = true;
+                Destroy(GetComponent<Particle>());
+            }
         }
     }
 }
