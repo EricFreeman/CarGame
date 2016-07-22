@@ -22,8 +22,8 @@ namespace Assets.Scripts.Camera
             var currentPosition = GameObject.transform.position;
             var delta = currentPosition - _lastPosition;
 
-            var goalPos = GameObject.transform.position + (delta * 30f);
-//            var goalPos = GameObject.transform.position + (GameObject.transform.forward * delta.magnitude * 20f);
+//            var goalPos = GameObject.transform.position + (delta * 30f);
+            var goalPos = GameObject.transform.position + (GameObject.transform.forward * delta.magnitude * 20f);
             goalPos.y = transform.position.y;
             
             transform.position = Vector3.SmoothDamp(transform.position, goalPos, ref _velocity, SmoothTime);

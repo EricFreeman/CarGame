@@ -21,7 +21,7 @@ namespace Assets.Scripts.Camera
         {
             var delta = Vector3.Distance(_previousPosition, transform.position);
             var currentVelocity = 0f;
-            _camera.orthographicSize = Mathf.SmoothDamp(_camera.orthographicSize, DefaultSize + (delta * 10), ref currentVelocity, 5f * Time.deltaTime);
+            _camera.orthographicSize = Mathf.SmoothDamp(_camera.orthographicSize, DefaultSize + (delta * 15), ref currentVelocity, 5f * Time.deltaTime);
             
             _previousPosition = transform.position;
         }

@@ -1,0 +1,278 @@
+fileFormatVersion: 2
+guid: eeac825aa73b6dc468a624a2b7298a22
+timeCreated: 1469144785
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: smoke-trail_0
+    21300002: smoke-trail_1
+    21300004: smoke-trail_2
+    21300006: smoke-trail_3
+    21300008: smoke-trail_4
+    21300010: smoke-trail_5
+    21300012: smoke-trail_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: smoke-trail_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: 0}
+        - {x: -7, y: -2}
+        - {x: -2, y: -7}
+        - {x: 1, y: -7}
+        - {x: 6, y: -2}
+        - {x: 3, y: 5}
+        - {x: -2, y: 6}
+    - name: smoke-trail_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: -8}
+        - {x: -5, y: -13}
+        - {x: 8, y: -13}
+        - {x: 13, y: -9}
+        - {x: 13, y: 10}
+        - {x: -10, y: 10}
+        - {x: -12, y: 6}
+    - name: smoke-trail_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 16}
+        - {x: -15, y: 12}
+        - {x: -15, y: -10}
+        - {x: -11, y: -14}
+        - {x: 6, y: -14}
+        - {x: 14, y: -13}
+        - {x: 14, y: 14}
+        - {x: 10, y: 16}
+    - name: smoke-trail_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -14, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 5}
+        - {x: 14, y: 16}
+    - name: smoke-trail_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10, y: 16}
+        - {x: 4, y: 16}
+        - {x: -6, y: 6}
+        - {x: -8, y: 1}
+        - {x: -8, y: -3}
+        - {x: -6, y: -7}
+        - {x: -2, y: -8}
+        - {x: 0, y: -5}
+        - {x: -1, y: -8}
+        - {x: -4, y: -8}
+        - {x: -7, y: -5}
+        - {x: -9, y: -2}
+        - {x: -9, y: 2}
+        - {x: -5, y: 7}
+        - {x: -2, y: 11}
+        - {x: -2, y: 16}
+        - {x: -14, y: 16}
+        - {x: -15, y: 14}
+        - {x: -15, y: -14}
+        - {x: -12, y: -16}
+        - {x: 14, y: -16}
+        - {x: 16, y: -9}
+        - {x: 16, y: 14}
+    - name: smoke-trail_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2, y: -16}
+        - {x: 1, y: -15}
+        - {x: 1, y: -12}
+        - {x: -2, y: -11}
+        - {x: -4, y: -13}
+      - - {x: -9, y: -12}
+        - {x: -6, y: -11}
+        - {x: -6, y: -8}
+        - {x: -9, y: -7}
+        - {x: -11, y: -9}
+      - - {x: 9, y: -10}
+        - {x: 12, y: -9}
+        - {x: 12, y: -6}
+        - {x: 9, y: -5}
+        - {x: 7, y: -7}
+      - - {x: -2, y: -8}
+        - {x: 1, y: -7}
+        - {x: 1, y: -4}
+        - {x: -2, y: -3}
+        - {x: -4, y: -5}
+      - - {x: -11, y: -5}
+        - {x: -8, y: -4}
+        - {x: -8, y: -1}
+        - {x: -11, y: 0}
+        - {x: -13, y: -2}
+      - - {x: 7, y: -3}
+        - {x: 10, y: -2}
+        - {x: 10, y: 1}
+        - {x: 7, y: 2}
+        - {x: 5, y: 0}
+      - - {x: -7, y: 2}
+        - {x: -4, y: 3}
+        - {x: -4, y: 6}
+        - {x: -7, y: 7}
+        - {x: -9, y: 5}
+      - - {x: 12, y: 3}
+        - {x: 15, y: 4}
+        - {x: 15, y: 7}
+        - {x: 12, y: 8}
+        - {x: 10, y: 6}
+      - - {x: -13, y: 5}
+        - {x: -10, y: 6}
+        - {x: -10, y: 9}
+        - {x: -13, y: 10}
+        - {x: -15, y: 8}
+      - - {x: 0, y: 6}
+        - {x: 3, y: 7}
+        - {x: 3, y: 10}
+        - {x: 0, y: 11}
+        - {x: -2, y: 9}
+      - - {x: 8, y: 8}
+        - {x: 11, y: 9}
+        - {x: 11, y: 12}
+        - {x: 8, y: 13}
+        - {x: 6, y: 11}
+      - - {x: -8, y: 11}
+        - {x: -5, y: 12}
+        - {x: -5, y: 15}
+        - {x: -8, y: 16}
+        - {x: -10, y: 14}
+      - - {x: 4, y: 11}
+        - {x: 7, y: 12}
+        - {x: 7, y: 15}
+        - {x: 4, y: 16}
+        - {x: 2, y: 14}
+    - name: smoke-trail_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: -12}
+        - {x: 8, y: -11}
+        - {x: 8, y: -8}
+        - {x: 5, y: -7}
+        - {x: 3, y: -9}
+      - - {x: -7, y: -10}
+        - {x: -4, y: -9}
+        - {x: -4, y: -6}
+        - {x: -7, y: -5}
+        - {x: -9, y: -7}
+      - - {x: 7, y: 2}
+        - {x: 10, y: 3}
+        - {x: 10, y: 6}
+        - {x: 7, y: 7}
+        - {x: 5, y: 5}
+      - - {x: -5, y: 6}
+        - {x: -2, y: 7}
+        - {x: -2, y: 10}
+        - {x: -5, y: 11}
+        - {x: -7, y: 9}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
