@@ -319,7 +319,7 @@ GameObject:
   - 4: {fileID: 463074627}
   - 212: {fileID: 463074628}
   m_Layer: 0
-  m_Name: player-body
+  m_Name: PlayerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -368,6 +368,47 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &493971583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 493971584}
+  - 114: {fileID: 493971585}
+  m_Layer: 0
+  m_Name: Boost
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &493971584
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 493971583}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.4, z: -0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1479671502}
+  m_RootOrder: 3
+--- !u!114 &493971585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 493971583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3715240b14b0914581e615bda9890cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoostGameObject: {fileID: 100330, guid: 8415bebe69f974a4da005af47c9e2b84, type: 2}
 --- !u!1 &559166414
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,7 +905,7 @@ MonoBehaviour:
   Acceleration: 0.03
   GroundFriction: 0.993
   MagnitudeCutoff: 0.001
-  BoostTurnSpeed: 2
+  BoostTurnSpeed: 1
   SlideTurnSpeed: 8
   MaxSpeed: 1.5
   Movement: {x: 0, y: 0, z: 0}
@@ -1277,6 +1318,7 @@ Transform:
   - {fileID: 463074627}
   - {fileID: 1933876984}
   - {fileID: 891213336}
+  - {fileID: 493971584}
   m_Father: {fileID: 1004141845}
   m_RootOrder: 0
 --- !u!212 &1479671503
@@ -1701,7 +1743,7 @@ GameObject:
   - 4: {fileID: 1933876984}
   - 212: {fileID: 1933876985}
   m_Layer: 0
-  m_Name: player-chassis
+  m_Name: PlayerChassis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
