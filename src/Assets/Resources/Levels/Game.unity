@@ -902,11 +902,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9cc493bfb709542ab15106b657392e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acceleration: 0.03
+  Acceleration: 0.04
   GroundFriction: 0.993
   MagnitudeCutoff: 0.001
   BoostTurnSpeed: 1
-  SlideTurnSpeed: 8
+  SlideTurnSpeed: 6
   MaxSpeed: 1.5
   Movement: {x: 0, y: 0, z: 0}
   EngineLoop: {fileID: 8300000, guid: 0f3a6155f2869b1499f28d05cf1f9639, type: 3}

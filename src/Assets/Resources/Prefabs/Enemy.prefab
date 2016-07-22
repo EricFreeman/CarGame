@@ -577,7 +577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxChangeOffsetTime: 2
-  MaxOffsetAmount: 40
+  MaxOffsetAmount: 50
 --- !u!114 &11456796
 MonoBehaviour:
   m_ObjectHideFlags: 1
