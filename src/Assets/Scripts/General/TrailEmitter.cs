@@ -32,6 +32,7 @@ namespace Assets.Scripts.General
         {
             var dust = Instantiate(DustGameObject);
             dust.transform.position = position;
+            dust.transform.rotation = transform.rotation;
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Assets.Scripts.Weapons
                 _shotCooldown = ShotCooldown;
                 var bullet = Instantiate(BulletGameObject);
                 bullet.transform.position = Tip.transform.position;
-                bullet.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y/2 + Random.Range(-Accuracy, Accuracy), 0);
+                bullet.transform.rotation = Tip.transform.rotation;
                 _audioSource.PlayOneShot(BulletSound);
                 _audioSource.pitch = 1 + Random.Range(-_pitchRandom, _pitchRandom);
                 _audioSource.volume = 1 - Random.Range(0, _volumeRandom);

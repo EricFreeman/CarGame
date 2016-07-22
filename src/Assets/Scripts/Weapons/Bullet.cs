@@ -11,7 +11,7 @@ namespace Assets.Scripts.Weapons
 
         void Update()
         {
-            transform.Translate(transform.forward * Speed * Time.timeScale);
+            transform.position += transform.forward * Speed * Time.timeScale;
         }
 
         void OnTriggerEnter(Collider collider)
