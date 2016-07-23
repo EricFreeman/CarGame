@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08c4e415cb2481f489bf3c64ffe2150e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 5
+  MaxHealth: 2
   Destroyed: {fileID: 21300000, guid: a738627ad100a8945b5f6c94a538e273, type: 3}
   PartsEmitter: {fileID: 11462350}
   SmokeEmitter: {fileID: 11482012}

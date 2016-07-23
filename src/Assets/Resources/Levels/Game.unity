@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustGameObject: {fileID: 111152, guid: 809aeb352602df945981692652f3dda1, type: 2}
-  SpawnDistance: 5
+  SpawnDistance: 1
 --- !u!1 &618773419
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,13 +548,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 635216475}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20d825f33607c8d448415904057f21f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DustGameObject: {fileID: 111152, guid: 809aeb352602df945981692652f3dda1, type: 2}
-  SpawnDistance: 5
+  SpawnDistance: 1
 --- !u!114 &635216478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustGameObject: {fileID: 115506, guid: 96833d42dabe5f94eb05e746255d5015, type: 2}
-  SpawnDistance: 5
+  SpawnDistance: 1
 --- !u!1 &824019315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,13 +1214,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1329023180}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20d825f33607c8d448415904057f21f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DustGameObject: {fileID: 115506, guid: 96833d42dabe5f94eb05e746255d5015, type: 2}
-  SpawnDistance: 5
+  SpawnDistance: 1
 --- !u!114 &1329023183
 MonoBehaviour:
   m_ObjectHideFlags: 0
