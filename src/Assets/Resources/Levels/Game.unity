@@ -438,20 +438,20 @@ Transform:
   m_Children:
   - {fileID: 1962173866}
   m_Father: {fileID: 891213336}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &559166416
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 559166414}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20d825f33607c8d448415904057f21f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DustGameObject: {fileID: 115506, guid: 96833d42dabe5f94eb05e746255d5015, type: 2}
-  SpawnDistance: 0.2
+  DustGameObject: {fileID: 111152, guid: 809aeb352602df945981692652f3dda1, type: 2}
+  SpawnDistance: 5
 --- !u!1 &618773419
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,20 +541,20 @@ Transform:
   m_Children:
   - {fileID: 618773420}
   m_Father: {fileID: 891213336}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &635216477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 635216475}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20d825f33607c8d448415904057f21f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DustGameObject: {fileID: 115506, guid: 96833d42dabe5f94eb05e746255d5015, type: 2}
-  SpawnDistance: 0.2
+  DustGameObject: {fileID: 111152, guid: 809aeb352602df945981692652f3dda1, type: 2}
+  SpawnDistance: 5
 --- !u!114 &635216478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,20 +641,20 @@ Transform:
   m_Children:
   - {fileID: 347886587}
   m_Father: {fileID: 891213336}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!114 &813963975
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 813963973}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20d825f33607c8d448415904057f21f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DustGameObject: {fileID: 115506, guid: 96833d42dabe5f94eb05e746255d5015, type: 2}
-  SpawnDistance: 0.2
+  SpawnDistance: 5
 --- !u!1 &824019315
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,10 +820,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 635216476}
   - {fileID: 1329023181}
-  - {fileID: 559166415}
+  - {fileID: 635216476}
   - {fileID: 813963974}
+  - {fileID: 559166415}
   m_Father: {fileID: 1479671502}
   m_RootOrder: 2
 --- !u!1 &929016299
@@ -1207,20 +1207,20 @@ Transform:
   m_Children:
   - {fileID: 1651593892}
   m_Father: {fileID: 891213336}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!114 &1329023182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1329023180}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20d825f33607c8d448415904057f21f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DustGameObject: {fileID: 115506, guid: 96833d42dabe5f94eb05e746255d5015, type: 2}
-  SpawnDistance: 0.2
+  SpawnDistance: 5
 --- !u!114 &1329023183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2142,7 +2142,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2072361684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.89, y: 1.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
