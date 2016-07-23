@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 454150}
+  - 114: {fileID: 11454492}
   m_Layer: 0
   m_Name: BulletTrail
   m_TagString: Untagged
@@ -23,7 +24,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 402022}
-  - 114: {fileID: 11465986}
   - 212: {fileID: 21205048}
   m_Layer: 0
   m_Name: Sprite
@@ -59,12 +59,12 @@ Transform:
   - {fileID: 402022}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11465986
+--- !u!114 &11454492
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137552}
+  m_GameObject: {fileID: 132602}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58937892bdbcc2c4d8052f57aace6996, type: 3}

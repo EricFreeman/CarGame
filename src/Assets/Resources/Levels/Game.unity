@@ -944,10 +944,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9cc493bfb709542ab15106b657392e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acceleration: 0.04
-  GroundFriction: 0.993
+  Acceleration: 0.06
+  GroundFriction: 0.991
   MagnitudeCutoff: 0.001
-  BoostTurnSpeed: 1
+  BoostTurnSpeed: 0.5
   SlideTurnSpeed: 6
   MaxSpeed: 1.5
   Movement: {x: 0, y: 0, z: 0}
