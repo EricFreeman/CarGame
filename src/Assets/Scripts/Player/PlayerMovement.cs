@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using Assets.Scripts.Extensions;
 using UnityEngine;
 
 namespace Assets.Scripts.Player

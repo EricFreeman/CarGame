@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Player;
+using UnityEngine;
 
 namespace Assets.Scripts.Enemies
 {
@@ -10,6 +11,8 @@ namespace Assets.Scripts.Enemies
 
         private Vector3 _offset;
         private float _currentChangeOffsetTime;
+        private float _respawnTime;
+        private const float _repsawnRange = 150f;
 
         void Start()
         {
@@ -17,7 +20,7 @@ namespace Assets.Scripts.Enemies
             _player = GameObject.Find("Player");
         }
 
-        void Update()
+        void LateUpdate()
         {
             _currentChangeOffsetTime -= Time.deltaTime;
 
@@ -28,6 +31,36 @@ namespace Assets.Scripts.Enemies
             }
 
             GetComponent<NavMeshAgent>().destination = _player.transform.position + _offset;
+
+            RepositionEnemy();
+        }
+
+        private void RepositionEnemy()
+        {
+            _respawnTime -= Time.deltaTime;
+            var distance = Vector3.Distance(_player.transform.position, transform.position);
+            if (distance > 125 && _respawnTime <= 0)
+            {
+                var offset = _player.GetComponent<PlayerMovement>().Movement.normalized * 350;
+                offset += new Vector3(Random.Range(-_repsawnRange, _repsawnRange), 0, Random.Range(-_repsawnRange, _repsawnRange));
+                var respawnAround = _player.transform.position + offset;
+                GetComponent<NavMeshAgent>().enabled = false;
+                transform.position = respawnAround;
+                GetComponent<NavMeshAgent>().enabled = true;;
+
+                Debug.Log("offset: " + offset);
+                Debug.Log("enemy: " + transform.position);
+                Debug.Log("player: " + _player.transform.position);
+                Debug.Log("distance: " + Vector3.Distance(transform.position, _player.transform.position));
+                if (Vector3.Distance(transform.position, _player.transform.position) < 100)
+                {
+                    Debug.Log("respawn around: " + respawnAround);
+                    Debug.Log("okay fuck");
+                }
+
+                _respawnTime = Random.Range(1f, 10f);
+                _currentChangeOffsetTime = 0;
+            }
         }
     }
 }
