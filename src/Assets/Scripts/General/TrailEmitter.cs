@@ -14,7 +14,10 @@ namespace Assets.Scripts.General
         void Start()
         {
             _lastPosition = transform.position;
-            _lastEverythingPosition = Hack.Everything.transform.position;
+            if (Hack.Everything != null)
+            {
+                _lastEverythingPosition = Hack.Everything.transform.position;
+            }
         }
 
         void Update()
