@@ -67,7 +67,7 @@ namespace Assets.Scripts.Player
                 {
                     if (hit.distance <= rayTest.magnitude + 1.5f)
                     {
-                        Bounce(hit.normal);
+//                        Bounce(hit.normal);
                     }
                 }
                 Movement += newMovement;
@@ -107,7 +107,7 @@ namespace Assets.Scripts.Player
         {
             if (collision.transform.tag == "Wall")
             {
-                Bounce(collision.contacts.Select(x => x.normal).Average());
+                //Bounce(collision.contacts.Select(x => x.normal).Average());
             }
         }
 
