@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Scripts.Environment;
 using Assets.Scripts.General;
 using Assets.Scripts.Messages;
 using UnityEngine;
@@ -119,10 +120,12 @@ namespace Assets.Scripts.Enemies
 
                 var explosion = Instantiate(Explosion);
                 explosion.transform.position = transform.position;
+                explosion.transform.SetParent(Hack.Everything.transform);
 
                 var crater = Instantiate(Crater);
                 crater.transform.position = transform.position;
                 crater.transform.rotation = transform.rotation;
+                crater.transform.SetParent(Hack.Everything.transform);
             }
         }
     }

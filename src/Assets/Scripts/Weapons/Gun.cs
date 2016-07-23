@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Messages;
+﻿using Assets.Scripts.Environment;
+using Assets.Scripts.Messages;
 using UnityEngine;
 using UnityEventAggregator;
 
@@ -37,6 +38,7 @@ namespace Assets.Scripts.Weapons
                 bullet.transform.position = Tip.transform.position;
                 bullet.transform.rotation = Tip.transform.rotation;
                 bullet.transform.Rotate(0, Random.Range(-Accuracy, Accuracy), 0);
+                bullet.transform.SetParent(Hack.Everything.transform);
                 _audioSource.PlayOneShot(BulletSound);
                 _audioSource.pitch = 1 + Random.Range(-_pitchRandom, _pitchRandom);
                 _audioSource.volume = 1 - Random.Range(0, _volumeRandom);

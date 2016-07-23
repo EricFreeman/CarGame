@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Scripts.Environment;
 using Assets.Scripts.Extensions;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -39,6 +40,7 @@ namespace Assets.Scripts.General
                     var obj = Instantiate(ParticleGameObject);
                     obj.GetComponentInChildren<SpriteRenderer>().sprite = SpriteList.Random();
                     obj.transform.position = transform.position + new Vector3(0, .1f, 0);
+                    obj.transform.SetParent(Hack.Everything.transform);
 
                     var rigidBody = obj.GetComponent<Rigidbody>();
                     if (rigidBody != null)
@@ -55,6 +57,7 @@ namespace Assets.Scripts.General
         public void Fire(float colorMultiplier)
         {
             var obj = Instantiate(ParticleGameObject);
+            obj.transform.SetParent(Hack.Everything.transform);
             var spriteRenderer = obj.GetComponentInChildren<SpriteRenderer>();
             spriteRenderer.sprite = SpriteList.Random();
 
@@ -84,6 +87,7 @@ namespace Assets.Scripts.General
                 var obj = Instantiate(ParticleGameObject);
                 obj.GetComponentInChildren<SpriteRenderer>().sprite = SpriteList.Random();
                 obj.transform.position = transform.position + new Vector3(0, .1f, 0);
+                obj.transform.SetParent(Hack.Everything.transform);
 
                 var particle = obj.GetComponent<Particle>();
                 particle.Velocity = initialVelocity + (

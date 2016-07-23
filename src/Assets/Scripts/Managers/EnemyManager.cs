@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Messages;
+﻿using Assets.Scripts.Environment;
+using Assets.Scripts.Messages;
 using UnityEngine;
 using UnityEventAggregator;
 
@@ -44,6 +45,7 @@ namespace Assets.Scripts.Managers
         private void SpawnEnemy()
         {
             var enemy = Instantiate(Enemy);
+            enemy.transform.SetParent(Hack.Everything.transform);
             var randomX = Random.Range(0, 2);
             var randomY = Random.Range(0, 2);
             var offset = new Vector3(Random.Range(40, 80) * (randomX == 0 ? -1 : 1), 0, Random.Range(40, 80) * (randomY == 0 ? -1 : 1));
