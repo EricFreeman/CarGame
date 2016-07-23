@@ -110,9 +110,10 @@ namespace Assets.Scripts.Enemies
                 Destroy(GetComponent<PlayerFollow>());
                 GetComponentInChildren<SpriteRenderer>().sprite = Destroyed;
 
-                var rigidBody = GetComponent<Rigidbody>();
-                rigidBody.isKinematic = false;
-                rigidBody.velocity = currentVelocity;
+                Destroy(GetComponent<Rigidbody>());
+                Destroy(GetComponent<BoxCollider>());
+//                rigidBody.isKinematic = false;
+//                rigidBody.velocity = currentVelocity;
 
                 PartsEmitter.Fire(currentVelocity, 20, Random.Range(5, 10));
 
