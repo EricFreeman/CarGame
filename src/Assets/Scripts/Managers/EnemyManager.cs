@@ -56,19 +56,19 @@ namespace Assets.Scripts.Managers
             var position = Random.Range(0, 4);
             if (position == 0)
             {
-                return new Vector3(Random.Range(-120f, 120f), 0, Random.Range(100f, 120f));
+                return new Vector3(Random.Range(-120f, 120f), 0, Random.Range(120f, 150f));
             }
             else if (position == 1)
             {
-                return new Vector3(Random.Range(100f, 120f), 0, Random.Range(-120f, 120f));
+                return new Vector3(Random.Range(120f, 150f), 0, Random.Range(-120f, 120f));
             }
             else if (position == 2)
             {
-                return new Vector3(Random.Range(-120f, 120f), 0, Random.Range(-100f, -120f));
+                return new Vector3(Random.Range(-120f, 120f), 0, Random.Range(-120f, -150f));
             }
             else
             {
-                return new Vector3(Random.Range(-100f, -120f), 0, Random.Range(-120f, 120f));
+                return new Vector3(Random.Range(-120f, -150f), 0, Random.Range(-120f, 120f));
             }
         }
     }
