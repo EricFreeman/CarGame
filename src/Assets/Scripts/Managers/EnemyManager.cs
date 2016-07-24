@@ -48,7 +48,7 @@ namespace Assets.Scripts.Managers
             enemy.transform.SetParent(Hack.Everything.transform);
             var randomX = Random.Range(0, 2);
             var randomY = Random.Range(0, 2);
-            var offset = new Vector3(Random.Range(40, 80) * (randomX == 0 ? -1 : 1), 0, Random.Range(40, 80) * (randomY == 0 ? -1 : 1));
+            var offset = new Vector3(Random.Range(100, 120) * (randomX == 0 ? -1 : 1), 0, Random.Range(100, 120) * (randomY == 0 ? -1 : 1));
             enemy.transform.position = _player.transform.position + offset;
             enemy.transform.SetParent(transform);
         }

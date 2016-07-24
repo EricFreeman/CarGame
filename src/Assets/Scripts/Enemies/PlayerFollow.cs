@@ -41,25 +41,34 @@ namespace Assets.Scripts.Enemies
             var distance = Vector3.Distance(_player.transform.position, transform.position);
             if (distance > 125 && _respawnTime <= 0)
             {
-                var offset = _player.GetComponent<PlayerMovement>().Movement.normalized * 350;
-                offset += new Vector3(Random.Range(-_repsawnRange, _repsawnRange), 0, Random.Range(-_repsawnRange, _repsawnRange));
-                var respawnAround = _player.transform.position + offset;
+                var newPos = GetNewPosition();
+                
                 GetComponent<NavMeshAgent>().enabled = false;
-                transform.position = respawnAround;
+                transform.position = newPos;
                 GetComponent<NavMeshAgent>().enabled = true;;
-
-                Debug.Log("offset: " + offset);
-                Debug.Log("enemy: " + transform.position);
-                Debug.Log("player: " + _player.transform.position);
-                Debug.Log("distance: " + Vector3.Distance(transform.position, _player.transform.position));
-                if (Vector3.Distance(transform.position, _player.transform.position) < 100)
-                {
-                    Debug.Log("respawn around: " + respawnAround);
-                    Debug.Log("okay fuck");
-                }
 
                 _respawnTime = Random.Range(1f, 10f);
                 _currentChangeOffsetTime = 0;
+            }
+        }
+
+        private Vector3 GetNewPosition()
+        {
+            var respawnType = Random.Range(0, 2);
+
+            if (respawnType == 0)
+            {
+                var randomX = Random.Range(0, 2);
+                var randomY = Random.Range(0, 2);
+                var offset = new Vector3(Random.Range(100, 120) * (randomX == 0 ? -1 : 1), 0, Random.Range(100, 120) * (randomY == 0 ? -1 : 1));
+                return _player.transform.position + offset;
+            }
+            else
+            {
+                var offset = _player.GetComponent<PlayerMovement>().Movement.normalized*350;
+                offset += new Vector3(Random.Range(-_repsawnRange, _repsawnRange), 0,
+                    Random.Range(-_repsawnRange, _repsawnRange));
+                return _player.transform.position + offset;
             }
         }
     }
