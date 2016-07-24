@@ -20,11 +20,17 @@ namespace Assets.Scripts.General
             }
         }
 
-        void Update()
+        void LateUpdate()
         {
-            var negatedDelta = (Hack.Everything.transform.position - _lastEverythingPosition);
+            var negatedDelta = Hack.Everything.transform.position - _lastEverythingPosition;
             var delta = transform.position - _lastPosition - negatedDelta;
             var particlesToSpawn = (int)(delta.magnitude/SpawnDistance);
+
+            // this is a hack because I don't feel like figuring out why this is happening
+            if (particlesToSpawn > 20)
+            {
+                particlesToSpawn = 1;
+            }
 
             var spawnPosition = _lastPosition;
             for (var i = 0; i < particlesToSpawn; i++)
