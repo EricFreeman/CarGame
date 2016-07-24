@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Player;
+﻿using Assets.Scripts.Managers;
+using Assets.Scripts.Player;
 using UnityEngine;
 
 namespace Assets.Scripts.Enemies
@@ -54,13 +55,11 @@ namespace Assets.Scripts.Enemies
 
         private Vector3 GetNewPosition()
         {
-            var respawnType = Random.Range(0, 2);
+            var respawnType = Random.Range(0, 3);
 
             if (respawnType == 0)
             {
-                var randomX = Random.Range(0, 2);
-                var randomY = Random.Range(0, 2);
-                var offset = new Vector3(Random.Range(100, 120) * (randomX == 0 ? -1 : 1), 0, Random.Range(100, 120) * (randomY == 0 ? -1 : 1));
+                var offset = EnemyManager.SpawnOffScreen();
                 return _player.transform.position + offset;
             }
             else

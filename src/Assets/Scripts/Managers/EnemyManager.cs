@@ -46,11 +46,30 @@ namespace Assets.Scripts.Managers
         {
             var enemy = Instantiate(Enemy);
             enemy.transform.SetParent(Hack.Everything.transform);
-            var randomX = Random.Range(0, 2);
-            var randomY = Random.Range(0, 2);
-            var offset = new Vector3(Random.Range(100, 120) * (randomX == 0 ? -1 : 1), 0, Random.Range(100, 120) * (randomY == 0 ? -1 : 1));
+            var offset = SpawnOffScreen();
             enemy.transform.position = _player.transform.position + offset;
             enemy.transform.SetParent(transform);
+        }
+
+        public static Vector3 SpawnOffScreen()
+        {
+            var position = Random.Range(0, 4);
+            if (position == 0)
+            {
+                return new Vector3(Random.Range(-120f, 120f), 0, Random.Range(100f, 120f));
+            }
+            else if (position == 1)
+            {
+                return new Vector3(Random.Range(100f, 120f), 0, Random.Range(-120f, 120f));
+            }
+            else if (position == 2)
+            {
+                return new Vector3(Random.Range(-120f, 120f), 0, Random.Range(-100f, -120f));
+            }
+            else
+            {
+                return new Vector3(Random.Range(-100f, -120f), 0, Random.Range(-120f, 120f));
+            }
         }
     }
 }
