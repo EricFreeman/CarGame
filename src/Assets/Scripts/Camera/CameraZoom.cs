@@ -22,14 +22,8 @@ namespace Assets.Scripts.Camera
 
         void Update ()
         {
-            var time = Time.fixedTime;
             var negatedDelta = (Hack.Everything.transform.position - _lastEverythingPosition).magnitude;
             var delta = Mathf.Abs(Vector3.Distance(_previousPosition, transform.position) - negatedDelta);
-
-            if (delta > 0 && time < .1)
-            {
-                delta = 0;
-            }
 
             var currentVelocity = 0f;
             _camera.orthographicSize = Mathf.SmoothDamp(_camera.orthographicSize, DefaultSize + (delta * 15), ref currentVelocity, 5f * Time.deltaTime);

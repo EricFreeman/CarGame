@@ -16,6 +16,7 @@ namespace Assets.Scripts.Camera
         {
             transform.position = GameObject.transform.position + Offset;
             _lastGameObjectPosition = GameObject.transform.position;
+            _lastPosition = transform.position;
         }
 
         void LateUpdate()
