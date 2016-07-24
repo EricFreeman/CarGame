@@ -8,7 +8,7 @@ using ParticleEmitter = Assets.Scripts.General.ParticleEmitter;
 
 namespace Assets.Scripts.Enemies
 {
-    public class EnemyHealthBehavior : MonoBehaviour, IHealthBehavior
+    public class EnemyHealthBehavior : MonoBehaviour, IHealthBehavior, IListener<EnemyExplosion>
     {
         public int MaxHealth;
         public Sprite Destroyed;
@@ -27,6 +27,8 @@ namespace Assets.Scripts.Enemies
         public GameObject Ricochet;
         public GameObject Crater;
 
+        public float ChainReactionDistance = 15f;
+
         [HideInInspector]
         public int CurrentHealth;
 
@@ -41,10 +43,16 @@ namespace Assets.Scripts.Enemies
 
         void Start()
         {
+            this.Register<EnemyExplosion>();
             CurrentHealth = MaxHealth;
             _currentSmokeDelay = SmokeDelay;
 //            AnimationController.PlayAnimation(EnemyAnimation, AnimationType.Loop);
             _audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        void OnDestroy()
+        {
+            this.UnRegister<EnemyExplosion>();
         }
 
         void Update()
@@ -126,6 +134,16 @@ namespace Assets.Scripts.Enemies
                 crater.transform.position = transform.position;
                 crater.transform.rotation = transform.rotation;
                 crater.transform.SetParent(Hack.Everything.transform);
+
+                EventAggregator.SendMessage(new EnemyExplosion { Position = transform.position });
+            }
+        }
+
+        public void Handle(EnemyExplosion message)
+        {
+            if (Vector3.Distance(transform.position, message.Position) < ChainReactionDistance)
+            {
+                Die(new DamageContext());
             }
         }
     }
