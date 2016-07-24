@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.Scripts.Environment;
 using Assets.Scripts.General;
 using Assets.Scripts.Messages;
 using UnityEngine;
 using UnityEventAggregator;
 using ParticleEmitter = Assets.Scripts.General.ParticleEmitter;
+using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.Enemies
 {
@@ -15,6 +17,7 @@ namespace Assets.Scripts.Enemies
         public ParticleEmitter PartsEmitter;
         public ParticleEmitter SmokeEmitter;
         public GameObject Explosion;
+        public GameObject MiniExplosion;
 
         public List<Sprite> EnemyAnimation;
         public List<Sprite> EnemyDamagedAnimation;
@@ -36,6 +39,8 @@ namespace Assets.Scripts.Enemies
         private float _currentSmokeDelay;
 
         private bool _isDead;
+        private bool _isDying;
+        private float _dyingTimeRemaining = 1;
 
         private AudioSource _audioSource;
         private float _pitchRandom = .05f;
@@ -46,7 +51,6 @@ namespace Assets.Scripts.Enemies
             this.Register<EnemyExplosion>();
             CurrentHealth = MaxHealth;
             _currentSmokeDelay = SmokeDelay;
-//            AnimationController.PlayAnimation(EnemyAnimation, AnimationType.Loop);
             _audioSource = gameObject.AddComponent<AudioSource>();
         }
 
@@ -66,6 +70,37 @@ namespace Assets.Scripts.Enemies
                     SmokeEmitter.Fire((float) CurrentHealth < 0 ? 0 : CurrentHealth/(float) MaxHealth);
                 }
             }
+
+            if (_isDying)
+            {
+                UpdateDying();
+            }
+
+        }
+
+        private float _miniExplosionDelay;
+        private void UpdateDying()
+        {
+            _miniExplosionDelay -= Time.deltaTime;
+            _dyingTimeRemaining -= Time.deltaTime;
+
+            if (_dyingTimeRemaining > 0)
+            {
+                if (_miniExplosionDelay < 0)
+                {
+                    _miniExplosionDelay = .1f;
+
+                    var explosion = Instantiate(MiniExplosion);
+                    explosion.transform.position = transform.position + new Vector3(Random.Range(-2f, 2f), 0, Random.Range(-2f, 2f));
+                    explosion.transform.rotation = transform.rotation;
+                    explosion.transform.SetParent(transform);
+                }
+            }
+            else
+            {
+                _isDying = false;
+                Die(new DamageContext());
+            }
         }
 
         public void TakeDamage(DamageContext context)
@@ -78,11 +113,8 @@ namespace Assets.Scripts.Enemies
 
             if (CurrentHealth <= 0)
             {
-                Die(context);
-            }
-            else
-            {
-//                AnimationController.PlayAnimation(EnemyDamagedAnimation, AnimationType.OneOff);
+                StartDying();
+                //Die(context);
             }
         }
 
@@ -102,18 +134,37 @@ namespace Assets.Scripts.Enemies
             _audioSource.volume = 1 - Random.Range(0, _volumeRandom);
         }
 
+        public void StartDying()
+        {
+            if (_isDead) return;
+
+            _isDying = true;
+
+            var navMesh = GetComponent<NavMeshAgent>();
+            var currentVelocity = navMesh != null ? navMesh.velocity : Vector3.zero;
+            var rigidBody = GetComponent<Rigidbody>();
+            Destroy(GetComponent<BoxCollider>());
+            Destroy(GetComponent<PlayerFollow>());
+            Destroy(navMesh);
+            GetComponentInChildren<SpriteRenderer>().sprite = Destroyed;
+
+            rigidBody.isKinematic = false;
+            rigidBody.velocity = currentVelocity;
+
+            PartsEmitter.Fire(currentVelocity, 20, Random.Range(5, 10));
+        }
+
         public void Die(DamageContext context)
         {
             if (!_isDead)
             {
                 PlayClip(EnemyDieSound);
-//                AnimationController.PlayAnimation(EnemyDeadAnimation, AnimationType.Loop);
                 EventAggregator.SendMessage(new ShakeCamera());
                 EventAggregator.SendMessage(new EnemyDied());
                 _isDead = true;
 
                 var navMesh = GetComponent<NavMeshAgent>();
-                var currentVelocity = navMesh.velocity;
+                var currentVelocity = navMesh != null ? navMesh.velocity : Vector3.zero;
 
                 Destroy(navMesh);
                 Destroy(GetComponent<PlayerFollow>());
@@ -143,7 +194,8 @@ namespace Assets.Scripts.Enemies
         {
             if (Vector3.Distance(transform.position, message.Position) < ChainReactionDistance)
             {
-                Die(new DamageContext());
+                StartDying();
+                //Die(new DamageContext());
             }
         }
     }

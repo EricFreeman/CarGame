@@ -498,6 +498,7 @@ MonoBehaviour:
   PartsEmitter: {fileID: 11462350}
   SmokeEmitter: {fileID: 11482012}
   Explosion: {fileID: 174034, guid: 26c2f41181a33cd468e0374ca3d789eb, type: 2}
+  MiniExplosion: {fileID: 137136, guid: d2d838b06ee789d4ab432a15543f5a5a, type: 2}
   EnemyAnimation:
   - {fileID: 21300000, guid: 25832767ead14494fa1642a8bec116b4, type: 3}
   EnemyDamagedAnimation:
@@ -511,6 +512,7 @@ MonoBehaviour:
   EnemyDieSound: {fileID: 8300000, guid: 44cdc635f2b50ed458c8adf148da9297, type: 3}
   Ricochet: {fileID: 159502, guid: fe6fd9be899723c449076d90d2148574, type: 2}
   Crater: {fileID: 182032, guid: 28d8fa0e7cc5d294697174fea660354f, type: 2}
+  ChainReactionDistance: 15
   CurrentHealth: 10
   SmokeDelay: 0.05
 --- !u!114 &11409388
