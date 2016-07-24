@@ -71,6 +71,7 @@ namespace Assets.Scripts.Player
             Destroy(PlayerBody);
             Destroy(GetComponentInChildren<Boost>());
             Destroy(GetComponent<NavMeshObstacle>());
+            Destroy(GetComponentInChildren<PlayerWeapons>());
             GetComponentsInChildren<PlayerWheels>().Each(Destroy);
         }
     }
