@@ -55,7 +55,7 @@ namespace Assets.Scripts.Enemies
 
         private Vector3 GetNewPosition()
         {
-            var respawnType = Random.Range(0, 3);
+            var respawnType = Random.Range(0, 2);
 
             if (respawnType == 0)
             {
