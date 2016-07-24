@@ -64,7 +64,17 @@ namespace Assets.Scripts.Enemies
             }
             else
             {
-                var offset = _player.GetComponent<PlayerMovement>().Movement.normalized*350;
+                var movement = _player.GetComponent<PlayerMovement>();
+                Vector3 offset;
+                if (movement != null)
+                {
+                    offset = _player.GetComponent<PlayerMovement>().Movement.normalized*350;
+                }
+                else
+                {
+                    offset = Vector3.zero;
+                }
+
                 offset += new Vector3(Random.Range(-_repsawnRange, _repsawnRange), 0,
                     Random.Range(-_repsawnRange, _repsawnRange));
                 return _player.transform.position + offset;
