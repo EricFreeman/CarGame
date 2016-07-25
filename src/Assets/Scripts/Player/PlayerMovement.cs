@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Player
 {
@@ -34,6 +35,11 @@ namespace Assets.Scripts.Player
         {
             ApplyFriction();
             ApplyMovement();
+
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
         }
 
         private void ApplyMovement()
