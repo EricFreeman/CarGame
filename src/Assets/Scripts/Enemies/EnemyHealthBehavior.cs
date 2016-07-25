@@ -91,7 +91,7 @@ namespace Assets.Scripts.Enemies
                     _miniExplosionDelay = .1f;
 
                     var explosion = Instantiate(MiniExplosion);
-                    explosion.transform.position = transform.position + new Vector3(Random.Range(-2f, 2f), 0, Random.Range(-2f, 2f));
+                    explosion.transform.position = transform.position + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-2f, 2f));
                     explosion.transform.rotation = transform.rotation;
                     explosion.transform.SetParent(transform);
                 }

@@ -1,14 +1,19 @@
-﻿using Assets.Scripts.Enemies;
+﻿using System;
+using System.Collections.Generic;
+using Assets.Scripts.Enemies;
 using Assets.Scripts.General;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEventAggregator;
 
 namespace Assets.Scripts.Player
 {
     public class PlayerHealth : MonoBehaviour
     {
-        public int MaxHealth = 5;
+        public int MaxHealth = 8;
+        public Image HealthImage;
+        public List<Sprite> HealthSprites;
 
         [HideInInspector]
         public int CurrentHealth;
@@ -26,8 +31,14 @@ namespace Assets.Scripts.Player
 
         void Update()
         {
+            var percent = (double)CurrentHealth/MaxHealth;
+
+            var frame = (int)(HealthSprites.Count - percent * HealthSprites.Count);
+            HealthImage.sprite = CurrentHealth > 0 ? HealthSprites[frame] : null;
+
             if (_isDead)
             {
+                HealthImage.color = new Color(0, 0, 0, 0);
                 if (Input.GetKey(KeyCode.R))
                 {
                     SceneManager.LoadScene("Game");
