@@ -174,6 +174,7 @@ MonoBehaviour:
   BulletSound: {fileID: 8300000, guid: ec020d845e829114788ace0cbf8f404f, type: 3}
   ShotCooldown: 0.05
   Accuracy: 7.5
+  Heat: 2
 --- !u!1 &260918230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,6 +1782,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0010516a2655da4fb146212d103a62c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHeat: 100
+  CurrentHeat: 0
+  CoolingSpeed: 20
+  OverheatCooldown: 0
+  HeatImage: {fileID: 1962147600}
+  HeatSprite:
+  - {fileID: 21300000, guid: a39b3acf827fe0e42b411a606ca53bcf, type: 3}
+  - {fileID: 21300002, guid: a39b3acf827fe0e42b411a606ca53bcf, type: 3}
+  - {fileID: 21300004, guid: a39b3acf827fe0e42b411a606ca53bcf, type: 3}
+  - {fileID: 21300006, guid: a39b3acf827fe0e42b411a606ca53bcf, type: 3}
+  - {fileID: 21300008, guid: a39b3acf827fe0e42b411a606ca53bcf, type: 3}
+  - {fileID: 21300010, guid: a39b3acf827fe0e42b411a606ca53bcf, type: 3}
+  - {fileID: 21300012, guid: a39b3acf827fe0e42b411a606ca53bcf, type: 3}
+  - {fileID: 21300014, guid: a39b3acf827fe0e42b411a606ca53bcf, type: 3}
 --- !u!1 &1479671501
 GameObject:
   m_ObjectHideFlags: 0

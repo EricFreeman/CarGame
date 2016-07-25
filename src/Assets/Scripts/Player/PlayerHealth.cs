@@ -22,6 +22,7 @@ namespace Assets.Scripts.Player
 
         private bool _isDead;
         private Rigidbody _rigidBody;
+        private int _previousHealth;
 
         void Start()
         {
@@ -31,10 +32,10 @@ namespace Assets.Scripts.Player
 
         void Update()
         {
-            var percent = (double)CurrentHealth/MaxHealth;
-
-            var frame = (int)(HealthSprites.Count - percent * HealthSprites.Count);
-            HealthImage.sprite = CurrentHealth > 0 ? HealthSprites[frame] : null;
+            if (_previousHealth != CurrentHealth)
+            {
+                UpdateHealthSprite();
+            }
 
             if (_isDead)
             {
@@ -50,6 +51,16 @@ namespace Assets.Scripts.Player
                     _rigidBody.velocity = Vector3.zero;
                 }
             }
+
+            _previousHealth = CurrentHealth;
+        }
+
+        private void UpdateHealthSprite()
+        {
+            var percent = (double)CurrentHealth / MaxHealth;
+
+            var frame = (int)(HealthSprites.Count - percent * HealthSprites.Count);
+            HealthImage.sprite = CurrentHealth > 0 ? HealthSprites[frame] : null;
         }
 
         void OnTriggerEnter(Collider collider)

@@ -1,13 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Weapons;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEventAggregator;
 
 namespace Assets.Scripts.Player
 {
     public class PlayerWeapons : MonoBehaviour
     {
+        public float MaxHeat;
+        public float CurrentHeat;
+        public float CoolingSpeed;
+        public float OverheatCooldown;
+        public Image HeatImage;
+        public List<Sprite> HeatSprite; 
+
         private List<Gun> _weapons;
+        private bool _isOverheating;
 
         void Start()
         {
@@ -16,10 +27,40 @@ namespace Assets.Scripts.Player
          
         void Update()
         {
-            if (Input.GetKey(KeyCode.Space))
+            UpdateHeatSprite();
+
+            if (Input.GetKey(KeyCode.Space) && !_isOverheating)
             {
-                _weapons.ForEach(x => x.Shoot());
+                _weapons
+                    .Where(x => x.CanShoot())
+                    .Each(x =>
+                    {
+                        CurrentHeat = Mathf.Min(CurrentHeat + x.Heat, MaxHeat);
+                        x.Shoot();
+                    });
+
+                if (CurrentHeat >= MaxHeat)
+                {
+                    _isOverheating = true;
+                }
             }
+            else
+            {
+                CurrentHeat = Mathf.Max(CurrentHeat - CoolingSpeed * Time.deltaTime, 0);
+
+                if (Math.Abs(CurrentHeat) < .01f)
+                {
+                    _isOverheating = false;
+                }
+            }
+        }
+
+        private void UpdateHeatSprite()
+        {
+            var percent = CurrentHeat / MaxHeat;
+
+            var frame = Mathf.RoundToInt(percent * (HeatSprite.Count - 1));
+            HeatImage.sprite = HeatSprite[frame];
         }
     }
 }

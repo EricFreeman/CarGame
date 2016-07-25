@@ -13,6 +13,7 @@ namespace Assets.Scripts.Weapons
         public AudioClip BulletSound;
         public float ShotCooldown;
         public float Accuracy;
+        public float Heat;
 
         private float _shotCooldown;
         private AudioSource _audioSource;
@@ -31,7 +32,7 @@ namespace Assets.Scripts.Weapons
 
         public void Shoot()
         {
-            if (_shotCooldown <= 0)
+            if (CanShoot())
             {
                 _shotCooldown = ShotCooldown;
                 var bullet = Instantiate(BulletGameObject);
@@ -60,6 +61,11 @@ namespace Assets.Scripts.Weapons
             muzzleFlare.transform.position = Tip.transform.position;
             muzzleFlare.transform.rotation = Tip.transform.rotation;
             muzzleFlare.transform.SetParent(Tip.transform);
+        }
+
+        public bool CanShoot()
+        {
+            return _shotCooldown <= 0;
         }
     }
 }
