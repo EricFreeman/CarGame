@@ -40,7 +40,7 @@ namespace Assets.Scripts.Enemies
 
         private bool _isDead;
         private bool _isDying;
-        private float _dyingTimeRemaining = 1;
+        private float _dyingTimeRemaining = Random.Range(.5f, 1);
 
         private AudioSource _audioSource;
         private float _pitchRandom = .05f;
