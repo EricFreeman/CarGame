@@ -92,6 +92,7 @@ namespace Assets.Scripts.Player
             Destroy(GetComponent<NavMeshObstacle>());
             Destroy(GetComponentInChildren<PlayerWeapons>());
             GetComponentsInChildren<PlayerWheels>().Each(Destroy);
+            GetComponentsInChildren<AudioSource>().Each(Destroy);
         }
     }
 }
