@@ -174,7 +174,7 @@ MonoBehaviour:
   BulletSound: {fileID: 8300000, guid: ec020d845e829114788ace0cbf8f404f, type: 3}
   ShotCooldown: 0.05
   Accuracy: 7.5
-  Heat: 2
+  Heat: 1
 --- !u!1 &260918230
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +284,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -32, y: -32}
-  m_SizeDelta: {x: 64, y: 26}
+  m_SizeDelta: {x: 128, y: 52}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &262314452
 MonoBehaviour:
@@ -785,7 +785,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 32, y: -32}
-  m_SizeDelta: {x: 64, y: 26}
+  m_SizeDelta: {x: 128, y: 52}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &549338817
 MonoBehaviour:
@@ -1525,7 +1525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103cf1bd2a576a64ea43a0bad7285873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 8
+  MaxHealth: 10
   HealthImage: {fileID: 549338817}
   CurrentHealth: 0
   PlayerBody: {fileID: 463074626}
@@ -1638,7 +1638,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 32, y: -32}
-  m_SizeDelta: {x: 64, y: 26}
+  m_SizeDelta: {x: 128, y: 52}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1227001149
 MonoBehaviour:
@@ -1953,7 +1953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHeat: 100
   CurrentHeat: 0
-  CoolingSpeed: 20
+  CoolingSpeed: 40
   OverheatCooldown: 0
   HeatImage: {fileID: 262314452}
 --- !u!1 &1479671501
@@ -2665,7 +2665,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -32, y: -32}
-  m_SizeDelta: {x: 64, y: 26}
+  m_SizeDelta: {x: 128, y: 52}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1962147600
 MonoBehaviour:
