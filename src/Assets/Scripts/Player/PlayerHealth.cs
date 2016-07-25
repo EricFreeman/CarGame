@@ -52,10 +52,12 @@ namespace Assets.Scripts.Player
             _previousHealth = CurrentHealth;
         }
 
+        private Color _healthGreen = new Color(.637f, .8f, .15f);
         private void UpdateHealthSprite()
         {
             var percent = (float)CurrentHealth / MaxHealth;
             HealthImage.fillAmount = percent;
+            HealthImage.color = Color.Lerp(Color.red, _healthGreen, percent);
         }
 
         void OnTriggerEnter(Collider collider)

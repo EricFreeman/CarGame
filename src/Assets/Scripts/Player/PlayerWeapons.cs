@@ -58,6 +58,15 @@ namespace Assets.Scripts.Player
         {
             var percent = CurrentHeat / MaxHeat;
             HeatImage.fillAmount = percent;
+
+            if (_isOverheating)
+            {
+                HeatImage.color = new Color(.5f, .5f, .5f);
+            }
+            else
+            {
+                HeatImage.color = Color.Lerp(Color.yellow, Color.red, percent);
+            }
         }
     }
 }
