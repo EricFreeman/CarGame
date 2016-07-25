@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Assets.Scripts.Enemies;
 using Assets.Scripts.General;
 using UnityEngine;
@@ -13,7 +12,6 @@ namespace Assets.Scripts.Player
     {
         public int MaxHealth = 8;
         public Image HealthImage;
-        public List<Sprite> HealthSprites;
 
         [HideInInspector]
         public int CurrentHealth;
@@ -39,7 +37,6 @@ namespace Assets.Scripts.Player
 
             if (_isDead)
             {
-                HealthImage.color = new Color(0, 0, 0, 0);
                 if (Input.GetKey(KeyCode.R))
                 {
                     SceneManager.LoadScene("Game");
@@ -57,10 +54,8 @@ namespace Assets.Scripts.Player
 
         private void UpdateHealthSprite()
         {
-            var percent = (double)CurrentHealth / MaxHealth;
-
-            var frame = (int)(HealthSprites.Count - percent * HealthSprites.Count);
-            HealthImage.sprite = CurrentHealth > 0 ? HealthSprites[frame] : null;
+            var percent = (float)CurrentHealth / MaxHealth;
+            HealthImage.fillAmount = percent;
         }
 
         void OnTriggerEnter(Collider collider)

@@ -15,7 +15,6 @@ namespace Assets.Scripts.Player
         public float CoolingSpeed;
         public float OverheatCooldown;
         public Image HeatImage;
-        public List<Sprite> HeatSprite; 
 
         private List<Gun> _weapons;
         private bool _isOverheating;
@@ -58,9 +57,7 @@ namespace Assets.Scripts.Player
         private void UpdateHeatSprite()
         {
             var percent = CurrentHeat / MaxHeat;
-
-            var frame = Mathf.RoundToInt(percent * (HeatSprite.Count - 1));
-            HeatImage.sprite = HeatSprite[frame];
+            HeatImage.fillAmount = percent;
         }
     }
 }
