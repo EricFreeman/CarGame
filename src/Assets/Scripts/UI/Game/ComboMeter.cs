@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Assets.Scripts.Messages;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,12 +16,14 @@ namespace Assets.Scripts.UI.Game
 
         private bool _isDisplayingMessage;
         private float _animationTime;
-        private List<Image> _comboNumbers; 
+        private List<Image> _comboNumbers;
 
         void Start()
         {
             this.Register<NewComboLevel>();
             _comboNumbers = new List<Image>();
+
+            _isDisplayingMessage = true;
         }
 
         void OnDestroy()
@@ -39,51 +42,86 @@ namespace Assets.Scripts.UI.Game
 
                 _animationTime += Time.deltaTime;
 
-                if (_animationTime < 1.5f)
-                {
-                    var desiredAlpha = Mathf.Lerp(0f, 1f, _animationTime/1.5f);
-                    var desiredX = Mathf.Lerp(-50, 0, _animationTime/1.5f);
-                    XImage.rectTransform.anchoredPosition = new Vector2(desiredX, -150);
-                    XImage.color = new Color(1, 1, 1, desiredAlpha);
-
-                    var desiredStartX = Mathf.Lerp(50, 0, _animationTime/1.5f);
-                    for (var i = 0; i < _comboNumbers.Count; i++)
-                    {
-                        _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(desiredStartX + i * 75, -150);
-                        _comboNumbers[i].color = new Color(1, 1, 1, desiredAlpha);
-                    }
-                }
-                else if (_animationTime > 1.5 && _animationTime < 2)
-                {
-                    for (var i = 0; i < _comboNumbers.Count; i++)
-                    {
-                        _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(0 + i * 75, -150);
-                        _comboNumbers[i].color = new Color(1, 1, 1, 1);
-                    }
-                }
-                else if (_animationTime > 2f && _animationTime < 4)
-                {
-                    var desiredAlpha = Mathf.Lerp(1f, 0f, _animationTime - 2f);
-                    var desiredX = Mathf.Lerp(0, -5000, _animationTime - 2f);
-                    XImage.rectTransform.anchoredPosition = new Vector2(desiredX, -150);
-                    XImage.color = new Color(1, 1, 1, desiredAlpha);
-
-                    var desiredStartX = Mathf.Lerp(0, 5000, _animationTime - 2f);
-                    for (var i = 0; i < _comboNumbers.Count; i++)
-                    {
-                        _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(desiredStartX + i * 75, -150);
-                        _comboNumbers[i].color = new Color(1, 1, 1, desiredAlpha);
-                    }
-                }
-                else if (_animationTime > 4)
-                {
-                    _animationTime = 0;
-                    _isDisplayingMessage = false;
-                    _comboNumbers.Each(x => Destroy(x.gameObject));
-                    _comboNumbers = new List<Image>(1);
-                }
+                UpdateAnimation();
             }
         }
+
+        #region Animations
+
+        private float StayStartTime = .25f;
+        private float ExitStartTime = 1f;
+        private float CleanupStartTime = 2.5f;
+        private float LetterSize = 35f;
+        private float DesiredY = -150;
+
+        private void UpdateAnimation()
+        {
+            if (_animationTime < StayStartTime)
+            {
+                Enter();
+            }
+            else if (_animationTime > StayStartTime && _animationTime < ExitStartTime)
+            {
+                Stay();
+            }
+            else if (_animationTime > ExitStartTime && _animationTime < CleanupStartTime)
+            {
+                Exit();
+            }
+            else if (_animationTime > CleanupStartTime)
+            {
+                CleanUp();
+            }
+        }
+
+        private void Enter()
+        {
+            var desiredAlpha = Mathf.Lerp(0f, 1f, _animationTime / StayStartTime);
+            var desiredX = Mathf.Lerp(-250, 0, _animationTime / StayStartTime);
+            XImage.rectTransform.anchoredPosition = new Vector2(desiredX, DesiredY);
+            XImage.color = new Color(1, 1, 1, desiredAlpha);
+
+            var desiredStartX = Mathf.Lerp(250, 0, _animationTime / StayStartTime);
+            for (var i = 0; i < _comboNumbers.Count; i++)
+            {
+                _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(desiredStartX + i * LetterSize, DesiredY);
+                _comboNumbers[i].color = new Color(1, 1, 1, desiredAlpha);
+            }
+        }
+
+        private void Stay()
+        {
+            for (var i = 0; i < _comboNumbers.Count; i++)
+            {
+                _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(0 + i * LetterSize, DesiredY);
+                _comboNumbers[i].color = new Color(1, 1, 1, 1);
+            }
+        }
+
+        private void Exit()
+        {
+            var desiredAlpha = Mathf.Lerp(1f, 0f, _animationTime - ExitStartTime);
+            var desiredX = Mathf.Lerp(0, -5000, _animationTime - ExitStartTime);
+            XImage.rectTransform.anchoredPosition = new Vector2(desiredX, DesiredY);
+            XImage.color = new Color(1, 1, 1, desiredAlpha);
+
+            var desiredStartX = Mathf.Lerp(0, 5000, _animationTime - ExitStartTime);
+            for (var i = 0; i < _comboNumbers.Count; i++)
+            {
+                _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(desiredStartX + i * LetterSize, DesiredY);
+                _comboNumbers[i].color = new Color(1, 1, 1, desiredAlpha);
+            }
+        }
+
+        private void CleanUp()
+        {
+            _animationTime = 0;
+            _isDisplayingMessage = false;
+            _comboNumbers.Each(x => Destroy(x.gameObject));
+            _comboNumbers = new List<Image>(1);
+        }
+
+        #endregion
 
         public void Handle(NewComboLevel message)
         {
@@ -100,10 +138,10 @@ namespace Assets.Scripts.UI.Game
         {
             _comboNumbers.Each(x => Destroy(x.gameObject));
             _comboNumbers = new List<Image>();
-            var bullshit = comboLevel.ToString().ToCharArray();
-            for (var i = 0; i < bullshit.Length; i++)
+            var charArray = comboLevel.ToString().ToCharArray();
+            foreach (var num in charArray)
             {
-                var number = int.Parse(bullshit[i].ToString());
+                var number = int.Parse(num.ToString());
                 var image = Instantiate(ComboNumber);
                 image.sprite = ComboNumbers[number];
                 image.transform.SetParent(ComboNumber.transform.parent, false);
