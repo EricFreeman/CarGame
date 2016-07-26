@@ -2048,7 +2048,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   XImage: {fileID: 867054523}
   ComboNumber: {fileID: 71036352}
-  ComboNumbers: []
+  ComboNumbers:
+  - {fileID: 21300000, guid: be553782d56af674a846464441303554, type: 3}
+  - {fileID: 21300002, guid: be553782d56af674a846464441303554, type: 3}
+  - {fileID: 21300004, guid: be553782d56af674a846464441303554, type: 3}
+  - {fileID: 21300006, guid: be553782d56af674a846464441303554, type: 3}
+  - {fileID: 21300008, guid: be553782d56af674a846464441303554, type: 3}
+  - {fileID: 21300010, guid: be553782d56af674a846464441303554, type: 3}
+  - {fileID: 21300012, guid: be553782d56af674a846464441303554, type: 3}
+  - {fileID: 21300014, guid: be553782d56af674a846464441303554, type: 3}
+  - {fileID: 21300016, guid: be553782d56af674a846464441303554, type: 3}
+  - {fileID: 21300018, guid: be553782d56af674a846464441303554, type: 3}
 --- !u!1 &1371172928
 GameObject:
   m_ObjectHideFlags: 0

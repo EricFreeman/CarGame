@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using Assets.Scripts.Messages;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,10 +11,11 @@ namespace Assets.Scripts.UI.Game
     {
         public Image XImage;
         public Image ComboNumber;
-        public List<Image> ComboNumbers;
+        public List<Sprite> ComboNumbers;
 
         private bool _isDisplayingMessage;
         private float _animationTime;
+        private List<Image> _comboNumbers; 
 
         void Start()
         {
@@ -46,8 +46,11 @@ namespace Assets.Scripts.UI.Game
                     XImage.color = new Color(1, 1, 1, desiredAlpha);
 
                     var desiredStartX = Mathf.Lerp(50, 0, _animationTime/1.5f);
-                    ComboNumber.rectTransform.anchoredPosition = new Vector2(desiredStartX, 0);
-                    ComboNumber.color = new Color(1, 1, 1, desiredAlpha);
+                    for (var i = 0; i < _comboNumbers.Count; i++)
+                    {
+                        _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(desiredStartX + i * 50, 0);
+                        _comboNumbers[i].color = new Color(1, 1, 1, desiredAlpha);
+                    }
                 }
                 else if (_animationTime > 2f && _animationTime < 4)
                 {
@@ -57,13 +60,17 @@ namespace Assets.Scripts.UI.Game
                     XImage.color = new Color(1, 1, 1, desiredAlpha);
 
                     var desiredStartX = Mathf.Lerp(0, 5000, _animationTime - 2f);
-                    ComboNumber.rectTransform.anchoredPosition = new Vector2(desiredStartX, 0);
-                    ComboNumber.color = new Color(1, 1, 1, desiredAlpha);
+                    for (var i = 0; i < _comboNumbers.Count; i++)
+                    {
+                        _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(desiredStartX + i * 50, 0);
+                        _comboNumbers[i].color = new Color(1, 1, 1, desiredAlpha);
+                    }
                 }
                 else if (_animationTime > 4)
                 {
                     _animationTime = 0;
                     _isDisplayingMessage = false;
+                    _comboNumbers.Each(x => Destroy(x.gameObject));
                 }
             }
         }
@@ -74,6 +81,17 @@ namespace Assets.Scripts.UI.Game
             {
                 _animationTime = 0;
                 _isDisplayingMessage = true;
+                _comboNumbers = new List<Image>();
+
+                var bullshit = message.ComboLevel.ToString().ToCharArray();
+                for (var i = 0; i < bullshit.Length; i++)
+                {
+                    var number = int.Parse(i.ToString());
+                    var image = Instantiate(ComboNumber);
+                    image.sprite = ComboNumbers[number];
+                    image.transform.SetParent(ComboNumber.transform.parent, false);
+                    _comboNumbers.Add(image);
+                }
             }
             else
             {
