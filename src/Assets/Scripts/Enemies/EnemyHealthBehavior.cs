@@ -40,7 +40,7 @@ namespace Assets.Scripts.Enemies
 
         private bool _isDead;
         private bool _isDying;
-        private float _dyingTimeRemaining = Random.Range(.5f, 1);
+        private float _dyingTimeRemaining;
 
         private AudioSource _audioSource;
         private float _pitchRandom = .05f;
@@ -52,6 +52,7 @@ namespace Assets.Scripts.Enemies
             CurrentHealth = MaxHealth;
             _currentSmokeDelay = SmokeDelay;
             _audioSource = gameObject.AddComponent<AudioSource>();
+            _dyingTimeRemaining = Random.Range(.5f, 1);
         }
 
         void OnDestroy()
