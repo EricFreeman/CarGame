@@ -43,13 +43,13 @@ namespace Assets.Scripts.UI.Game
                 {
                     var desiredAlpha = Mathf.Lerp(0f, 1f, _animationTime/1.5f);
                     var desiredX = Mathf.Lerp(-50, 0, _animationTime/1.5f);
-                    XImage.rectTransform.anchoredPosition = new Vector2(desiredX, 0);
+                    XImage.rectTransform.anchoredPosition = new Vector2(desiredX, -150);
                     XImage.color = new Color(1, 1, 1, desiredAlpha);
 
                     var desiredStartX = Mathf.Lerp(50, 0, _animationTime/1.5f);
                     for (var i = 0; i < _comboNumbers.Count; i++)
                     {
-                        _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(desiredStartX + i * 75, 0);
+                        _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(desiredStartX + i * 75, -150);
                         _comboNumbers[i].color = new Color(1, 1, 1, desiredAlpha);
                     }
                 }
@@ -57,7 +57,7 @@ namespace Assets.Scripts.UI.Game
                 {
                     for (var i = 0; i < _comboNumbers.Count; i++)
                     {
-                        _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(0 + i * 75, 0);
+                        _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(0 + i * 75, -150);
                         _comboNumbers[i].color = new Color(1, 1, 1, 1);
                     }
                 }
@@ -65,13 +65,13 @@ namespace Assets.Scripts.UI.Game
                 {
                     var desiredAlpha = Mathf.Lerp(1f, 0f, _animationTime - 2f);
                     var desiredX = Mathf.Lerp(0, -5000, _animationTime - 2f);
-                    XImage.rectTransform.anchoredPosition = new Vector2(desiredX, 0);
+                    XImage.rectTransform.anchoredPosition = new Vector2(desiredX, -150);
                     XImage.color = new Color(1, 1, 1, desiredAlpha);
 
                     var desiredStartX = Mathf.Lerp(0, 5000, _animationTime - 2f);
                     for (var i = 0; i < _comboNumbers.Count; i++)
                     {
-                        _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(desiredStartX + i * 75, 0);
+                        _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(desiredStartX + i * 75, -150);
                         _comboNumbers[i].color = new Color(1, 1, 1, desiredAlpha);
                     }
                 }
