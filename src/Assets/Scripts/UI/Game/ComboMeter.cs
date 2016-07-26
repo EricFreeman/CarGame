@@ -53,6 +53,14 @@ namespace Assets.Scripts.UI.Game
                         _comboNumbers[i].color = new Color(1, 1, 1, desiredAlpha);
                     }
                 }
+                else if (_animationTime > 1.5 && _animationTime < 2)
+                {
+                    for (var i = 0; i < _comboNumbers.Count; i++)
+                    {
+                        _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(0 + i * 75, 0);
+                        _comboNumbers[i].color = new Color(1, 1, 1, 1);
+                    }
+                }
                 else if (_animationTime > 2f && _animationTime < 4)
                 {
                     var desiredAlpha = Mathf.Lerp(1f, 0f, _animationTime - 2f);
@@ -101,7 +109,6 @@ namespace Assets.Scripts.UI.Game
                 image.transform.SetParent(ComboNumber.transform.parent, false);
                 _comboNumbers.Add(image);
             }
-            // TODO: meh
         }
     }
 }
