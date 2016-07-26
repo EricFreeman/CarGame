@@ -86,7 +86,7 @@ namespace Assets.Scripts.UI.Game
                 var bullshit = message.ComboLevel.ToString().ToCharArray();
                 for (var i = 0; i < bullshit.Length; i++)
                 {
-                    var number = int.Parse(i.ToString());
+                    var number = int.Parse(bullshit[i].ToString());
                     var image = Instantiate(ComboNumber);
                     image.sprite = ComboNumbers[number];
                     image.transform.SetParent(ComboNumber.transform.parent, false);
