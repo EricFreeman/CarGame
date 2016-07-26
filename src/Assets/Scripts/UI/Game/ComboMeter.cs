@@ -22,8 +22,6 @@ namespace Assets.Scripts.UI.Game
         {
             this.Register<NewComboLevel>();
             _comboNumbers = new List<Image>();
-
-            _isDisplayingMessage = true;
         }
 
         void OnDestroy()
@@ -50,7 +48,7 @@ namespace Assets.Scripts.UI.Game
 
         private float StayStartTime = .25f;
         private float ExitStartTime = 1f;
-        private float CleanupStartTime = 2.5f;
+        private float CleanupStartTime = 1.125f;
         private float LetterSize = 35f;
         private float DesiredY = -150;
 
@@ -100,12 +98,12 @@ namespace Assets.Scripts.UI.Game
 
         private void Exit()
         {
-            var desiredAlpha = Mathf.Lerp(1f, 0f, _animationTime - ExitStartTime);
-            var desiredX = Mathf.Lerp(0, -5000, _animationTime - ExitStartTime);
+            var desiredAlpha = Mathf.Lerp(1f, 0f, (_animationTime - ExitStartTime) / (CleanupStartTime - ExitStartTime));
+            var desiredX = Mathf.Lerp(0, -500, (_animationTime - ExitStartTime) / (CleanupStartTime - ExitStartTime));
             XImage.rectTransform.anchoredPosition = new Vector2(desiredX, DesiredY);
             XImage.color = new Color(1, 1, 1, desiredAlpha);
 
-            var desiredStartX = Mathf.Lerp(0, 5000, _animationTime - ExitStartTime);
+            var desiredStartX = Mathf.Lerp(0, 500, (_animationTime - ExitStartTime) / (CleanupStartTime - ExitStartTime));
             for (var i = 0; i < _comboNumbers.Count; i++)
             {
                 _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(desiredStartX + i * LetterSize, DesiredY);
@@ -115,6 +113,7 @@ namespace Assets.Scripts.UI.Game
 
         private void CleanUp()
         {
+            XImage.color = new Color(1, 1, 1, 0);
             _animationTime = 0;
             _isDisplayingMessage = false;
             _comboNumbers.Each(x => Destroy(x.gameObject));
