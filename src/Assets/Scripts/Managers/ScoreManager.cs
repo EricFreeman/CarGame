@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Messages;
+using Assets.Scripts.UI.Game;
 using UnityEngine;
 using UnityEventAggregator;
 
@@ -13,12 +14,15 @@ namespace Assets.Scripts.Managers
         private int _currentCombo;
         private int _currentKills;
 
+        public ScoreNumber ScoreNumber;
+
         [HideInInspector]
         public int Score;
 
         void Start()
         {
             this.Register<EnemyDied>();
+            ScoreNumber.UpdateScore(0);
         }
 
         void OnDestroy()
@@ -61,6 +65,7 @@ namespace Assets.Scripts.Managers
         private void AddPoints(int points)
         {
             Score += points + (points * _currentCombo);
+            ScoreNumber.UpdateScore(Score);
         }
     }
 }

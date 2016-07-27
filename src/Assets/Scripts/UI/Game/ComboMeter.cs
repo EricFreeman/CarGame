@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Assets.Scripts.Messages;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,11 +6,12 @@ using UnityEventAggregator;
 
 namespace Assets.Scripts.UI.Game
 {
-    public class ComboMeter : MonoBehaviour, IListener<NewComboLevel>
+    public class ComboMeter : MonoBehaviour, IListener<NewComboLevel>, IListener<LostCombo>
     {
         public Image XImage;
         public Image ComboNumber;
         public List<Sprite> ComboNumbers;
+        public ScoreNumber ScoreNumber;
 
         private bool _isDisplayingMessage;
         private float _animationTime;
@@ -20,12 +20,16 @@ namespace Assets.Scripts.UI.Game
         void Start()
         {
             this.Register<NewComboLevel>();
+            this.Register<LostCombo>();
+
             _comboNumbers = new List<Image>();
+            ScoreNumber.UpdateScore(0);
         }
 
         void OnDestroy()
         {
             this.UnRegister<NewComboLevel>();
+            this.UnRegister<LostCombo>();
         }
 
         void Update()
@@ -126,6 +130,7 @@ namespace Assets.Scripts.UI.Game
             }
 
             UpdateComboNumber(message.ComboLevel);
+            ScoreNumber.UpdateScore(message.ComboLevel);
         }
 
         private void UpdateComboNumber(int comboLevel)
@@ -141,6 +146,11 @@ namespace Assets.Scripts.UI.Game
                 image.transform.SetParent(ComboNumber.transform.parent, false);
                 _comboNumbers.Add(image);
             }
+        }
+
+        public void Handle(LostCombo message)
+        {
+            UpdateComboNumber(0);
         }
     }
 }

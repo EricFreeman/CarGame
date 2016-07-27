@@ -16,24 +16,8 @@ namespace Assets.Scripts.UI.Game
         public int PaddingY;
 
         private List<Image> _numbers;
-        private int _lastScore;
 
-        void Start()
-        {
-            UpdateScore(0);
-        }
-
-        void Update()
-        {
-            if (_lastScore != ScoreManager.Score)
-            {
-                UpdateScore(ScoreManager.Score);
-            }
-
-            _lastScore = ScoreManager.Score;
-        }
-
-        private void UpdateScore(int score)
+        public void UpdateScore(int score)
         {
             _numbers.Each(x => Destroy(x.gameObject));
             _numbers = new List<Image>();
