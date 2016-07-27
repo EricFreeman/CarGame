@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Assets.Scripts.Messages;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,11 +32,6 @@ namespace Assets.Scripts.UI.Game
         {
             if (_isDisplayingMessage)
             {
-                if (Math.Abs(_animationTime) < .001f)
-                {
-                    GetComponent<AudioSource>().Play();
-                }
-
                 _animationTime += Time.deltaTime;
 
                 UpdateAnimation();
