@@ -85,9 +85,17 @@ namespace Assets.Scripts.UI.Game
 
         private void Stay()
         {
+            var rumbleAmount = 10 * (.5f - _animationTime / ExitStartTime);
+            var rumbleX = Random.Range(-rumbleAmount, rumbleAmount);
+            var rumbleY = Random.Range(-rumbleAmount, rumbleAmount);
+            XImage.rectTransform.anchoredPosition = new Vector2(Middle + rumbleX, DesiredY + rumbleY);
+
             for (var i = 0; i < _comboNumbers.Count; i++)
             {
-                _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(-Middle + i * LetterSize, DesiredY);
+                var letterRumbleX = Random.Range(-rumbleAmount, rumbleAmount);
+                var letterRumbleY = Random.Range(-rumbleAmount, rumbleAmount);
+
+                _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(-Middle + i * LetterSize + letterRumbleX, DesiredY + letterRumbleY);
                 _comboNumbers[i].color = new Color(1, 1, 1, 1);
             }
         }
