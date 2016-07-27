@@ -1494,7 +1494,7 @@ MonoBehaviour:
   - {fileID: 21300016, guid: be553782d56af674a846464441303554, type: 3}
   - {fileID: 21300018, guid: be553782d56af674a846464441303554, type: 3}
   ScoreManager: {fileID: 1643537789}
-  Spacing: 25
+  Spacing: 16
   PaddingX: 16
   PaddingY: 16
 --- !u!1 &929016299

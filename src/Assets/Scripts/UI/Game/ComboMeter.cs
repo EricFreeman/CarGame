@@ -51,6 +51,7 @@ namespace Assets.Scripts.UI.Game
         private float CleanupStartTime = 1.125f;
         private float LetterSize = 35f;
         private float DesiredY = -150;
+        private float Middle = 10;
 
         private void UpdateAnimation()
         {
@@ -75,11 +76,11 @@ namespace Assets.Scripts.UI.Game
         private void Enter()
         {
             var desiredAlpha = Mathf.Lerp(0f, 1f, _animationTime / StayStartTime);
-            var desiredX = Mathf.Lerp(-250, 0, _animationTime / StayStartTime);
+            var desiredX = Mathf.Lerp(-250, Middle, _animationTime / StayStartTime);
             XImage.rectTransform.anchoredPosition = new Vector2(desiredX, DesiredY);
             XImage.color = new Color(1, 1, 1, desiredAlpha);
 
-            var desiredStartX = Mathf.Lerp(250, 0, _animationTime / StayStartTime);
+            var desiredStartX = Mathf.Lerp(250, -Middle, _animationTime / StayStartTime);
             for (var i = 0; i < _comboNumbers.Count; i++)
             {
                 _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(desiredStartX + i * LetterSize, DesiredY);
@@ -91,7 +92,7 @@ namespace Assets.Scripts.UI.Game
         {
             for (var i = 0; i < _comboNumbers.Count; i++)
             {
-                _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(0 + i * LetterSize, DesiredY);
+                _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(-Middle + i * LetterSize, DesiredY);
                 _comboNumbers[i].color = new Color(1, 1, 1, 1);
             }
         }
@@ -99,11 +100,11 @@ namespace Assets.Scripts.UI.Game
         private void Exit()
         {
             var desiredAlpha = Mathf.Lerp(1f, 0f, (_animationTime - ExitStartTime) / (CleanupStartTime - ExitStartTime));
-            var desiredX = Mathf.Lerp(0, -500, (_animationTime - ExitStartTime) / (CleanupStartTime - ExitStartTime));
+            var desiredX = Mathf.Lerp(Middle, -500, (_animationTime - ExitStartTime) / (CleanupStartTime - ExitStartTime));
             XImage.rectTransform.anchoredPosition = new Vector2(desiredX, DesiredY);
             XImage.color = new Color(1, 1, 1, desiredAlpha);
 
-            var desiredStartX = Mathf.Lerp(0, 500, (_animationTime - ExitStartTime) / (CleanupStartTime - ExitStartTime));
+            var desiredStartX = Mathf.Lerp(-Middle, 500, (_animationTime - ExitStartTime) / (CleanupStartTime - ExitStartTime));
             for (var i = 0; i < _comboNumbers.Count; i++)
             {
                 _comboNumbers[i].rectTransform.anchoredPosition = new Vector2(desiredStartX + i * LetterSize, DesiredY);
