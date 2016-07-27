@@ -13,6 +13,9 @@ namespace Assets.Scripts.Managers
         private int _currentCombo;
         private int _currentKills;
 
+        [HideInInspector]
+        public int Score;
+
         void Start()
         {
             this.Register<EnemyDied>();
@@ -44,13 +47,20 @@ namespace Assets.Scripts.Managers
         {
             _currentComboTime = ComboTime;
             _currentKills++;
-            
+
             if (_currentKills >= KillsPerComboLevel)
             {
                 _currentKills = 0;
                 _currentCombo++;
                 EventAggregator.SendMessage(new NewComboLevel { ComboLevel = _currentCombo });
             }
+
+            AddPoints(1);
+        }
+
+        private void AddPoints(int points)
+        {
+            Score += points + (points * _currentCombo);
         }
     }
 }
