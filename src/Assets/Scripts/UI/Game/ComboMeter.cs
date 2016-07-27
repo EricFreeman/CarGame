@@ -135,6 +135,8 @@ namespace Assets.Scripts.UI.Game
 
         private void UpdateComboNumber(int comboLevel)
         {
+            ScoreNumber.UpdateScore(comboLevel);
+
             _comboNumbers.Each(x => Destroy(x.gameObject));
             _comboNumbers = new List<Image>();
             var charArray = comboLevel.ToString().ToCharArray();
