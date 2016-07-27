@@ -6,7 +6,7 @@ using UnityEventAggregator;
 
 namespace Assets.Scripts.UI.Game
 {
-    public class ComboMeter : MonoBehaviour, IListener<NewComboLevel>, IListener<LostCombo>
+    public class ComboMeter : MonoBehaviour, IListener<NewComboLevel>
     {
         public Image XImage;
         public Image ComboNumber;
@@ -20,16 +20,13 @@ namespace Assets.Scripts.UI.Game
         void Start()
         {
             this.Register<NewComboLevel>();
-            this.Register<LostCombo>();
 
             _comboNumbers = new List<Image>();
-            ScoreNumber.UpdateScore(0);
         }
 
         void OnDestroy()
         {
             this.UnRegister<NewComboLevel>();
-            this.UnRegister<LostCombo>();
         }
 
         void Update()
@@ -148,11 +145,6 @@ namespace Assets.Scripts.UI.Game
                 image.transform.SetParent(ComboNumber.transform.parent, false);
                 _comboNumbers.Add(image);
             }
-        }
-
-        public void Handle(LostCombo message)
-        {
-            UpdateComboNumber(0);
         }
     }
 }

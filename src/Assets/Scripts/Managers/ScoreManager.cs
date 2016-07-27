@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Messages;
 using Assets.Scripts.UI.Game;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEventAggregator;
 
 namespace Assets.Scripts.Managers
@@ -15,6 +16,7 @@ namespace Assets.Scripts.Managers
         private int _currentKills;
 
         public ScoreNumber ScoreNumber;
+        public ScoreNumber ComboNumber;
 
         [HideInInspector]
         public int Score;
@@ -33,6 +35,12 @@ namespace Assets.Scripts.Managers
         void Update()
         {
             _currentComboTime -= Time.deltaTime;
+
+            if (_currentCombo > 0)
+            {
+                ComboNumber.GetComponentsInChildren<Image>()
+                    .Each(x => x.color = new Color(1, 1, 1, _currentComboTime/ComboTime));
+            }
 
             if (_currentComboTime <= 0 && _currentCombo > 0)
             {
